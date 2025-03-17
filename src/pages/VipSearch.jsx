@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import axios from 'axios'
+import { vipSearch } from '../api/products'
+import ProductCard from '../components/ProductCard'
 
 function VipSearch() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -13,19 +14,20 @@ function VipSearch() {
       setError('Introduce un término de búsqueda')
       return
     }
+    setLoading(true)
+    setError('')
     try {
-      setLoading(true)
-      setError('')
-      const response = await axios.get('/api/products/vipSearch', {
-        params: { name: searchTerm }
-      })
-      setProducts(response.data)
-      setLoading(false)
+      const { response, error } = await vipSearch(searchTerm)
+      if (error) {
+        setError(error.message || 'Error al buscar productos')
+      } else {
+        setProducts(response)
+      }
     } catch (err) {
       console.error(err)
-      setLoading(false)
       setError('Error al buscar productos. Intenta de nuevo.')
     }
+    setLoading(false)
   }
 
   return (
@@ -47,22 +49,19 @@ function VipSearch() {
         </button>
       </form>
       {error && <p className='text-red-500 mb-4'>{error}</p>}
-      <div>
-        {products.length === 0 && !loading ? (
-          <p>No se encontraron productos.</p>
-        ) : (
-          <ul>
-            {products.map((product) => (
-              <li key={product._id} className='border p-2 mb-2 rounded'>
-                <h2 className='text-xl font-bold'>{product.titulo}</h2>
-                <p>Precio: {product.precio}</p>
-                {product.descripcion && <p>{product.descripcion}</p>}
-                {/*  agregar más detalles y botones  */}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      {products.length === 0 && !loading ? (
+        <p>No se encontraron productos.</p>
+      ) : (
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+          {products.map((product) => (
+            <ProductCard
+              key={product._id || product.asin}
+              product={product}
+              showVipPrices={true}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

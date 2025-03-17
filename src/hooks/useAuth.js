@@ -1,6 +1,6 @@
 // src/hooks/useAuth.js
 import { useState } from 'react'
-import { loginUser, registerUser } from '../api/authApi'
+import { loginUser, registerUser } from '../api/auth'
 import useStore from '../store/useStore'
 
 const useAuth = () => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {
   getUniqueProductPerCategory,
   getTopSellingPerCategory
-} from '../api/productApi'
+} from '../api/products'
 import Carousel from '../components/Carousel'
 
 function Home() {
@@ -42,10 +42,10 @@ function Home() {
   return (
     <div>
       <section
-        className='relative h-64 flex items-center justify-center bg-cover bg-center'
-        style={{
-          backgroundImage: `url('https://source.unsplash.com/random/1600x400?shopping')`
-        }}
+        className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center
+        bg-[url('https://picsum.photos/400/300/?blur')]
+        sm:bg-[url('https://picsum.photos/800/300/?blur')]
+        lg:bg-[url('https://picsum.photos/1200/300/?blur')]"
       >
         <div className='absolute inset-0 bg-black opacity-50'></div>
         <div className='relative text-center text-white px-4'>

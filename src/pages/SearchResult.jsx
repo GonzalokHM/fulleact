@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { filterProducts } from '../api/productApi'
+import { filterProducts } from '../api/products'
 import ProductCard from '../components/ProductCard'
 
 function SearchResults() {

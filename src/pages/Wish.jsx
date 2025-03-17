@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import useStore from '../store/useStore'
-import { getWishlist, removeFromWishlist } from '../api/wishlistApi'
+import { getWishlist, removeFromWishlist } from '../api/wishlist'
 import ProductCard from '../components/ProductCard'
 
 function Wishlist() {
