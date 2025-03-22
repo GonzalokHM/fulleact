@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getProductByASIN } from '../api/products'
 import useStore from '../store/useStore'
+import BuyAndWishlist from '../components/BuyAndWishlist'
 
 function Details() {
-  const { id } = useParams() // correspondiente al asin
+  const { id } = useParams() // asin
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -56,21 +57,29 @@ function Details() {
           ) : (
             <p className='text-xl mb-2'>Precio: ${normalPrice}</p>
           )}
+          <div className='mt-4 py-2'>
+            <BuyAndWishlist product={product} />
+          </div>
+          <p className='mb-2'>Puntuación: {product.puntuacion}</p>
+          <p>{product.descripcion}</p>
           <p className='mb-2'>Marca: {product.marca}</p>
           <div className='flex items-center mb-2'>
             {product.categoria && (
-              <>
+              <Link
+                to={`/search-results?name=${encodeURIComponent(
+                  product.categoria.nombre
+                )}&type=category`}
+                className='flex items-center hover:underline'
+              >
                 <img
                   src={product.categoria.icono}
                   alt={product.categoria.nombre}
                   className='w-8 h-8 mr-2'
                 />
                 <span>{product.categoria.nombre}</span>
-              </>
+              </Link>
             )}
           </div>
-          <p className='mb-2'>Puntuación: {product.puntuacion}</p>
-          <p>{product.descripcion}</p>
         </div>
       </div>
     </div>

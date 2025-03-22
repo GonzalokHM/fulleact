@@ -13,6 +13,7 @@ import GetVip from './pages/GetVip'
 import Profile from './pages/Profile'
 import VipSearch from './pages/VipSearch'
 import Footer from './components/Footer'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/search-results' element={<SearchResults />} />
           <Route path='/getvip' element={<GetVip />} />
+          <Route path='*' element={<NotFound />} />
 
           <Route
             path='/wishlist'

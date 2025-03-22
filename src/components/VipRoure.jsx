@@ -4,8 +4,10 @@ import useStore from '../store/useStore'
 
 function VIPRoute({ children }) {
   const { user } = useStore()
-
-  if (!user || !user.vip) {
+  if (!user) {
+    return <Navigate to='/login' replace />
+  }
+  if (!user.vip) {
     return <Navigate to='/getVip' replace />
   }
 

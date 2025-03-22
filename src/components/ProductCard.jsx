@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import WishlistToggle from './WishListTogle'
+import BuyAndWishlist from './BuyAndWishlist'
 
 function ProductCard({ product, showVipPrices = false }) {
   let priceContent
@@ -30,15 +32,8 @@ function ProductCard({ product, showVipPrices = false }) {
       />
       <h2 className='text-xl font-bold mb-2'>{product.titulo}</h2>
       {priceContent}
-      <div className='mt-auto flex justify-between'>
-        <a
-          href={`https://www.amazon.es/dp/${product.asin}`}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded'
-        >
-          Comprar
-        </a>
+      <div className='flex justify-between'>
+        <BuyAndWishlist product={product} />
         <Link
           to={`/product/${product.asin}`}
           className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded'
