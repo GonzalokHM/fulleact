@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { filterProducts } from '../api/products'
 import ProductCard from '../components/ProductCard'
 
@@ -35,19 +35,46 @@ function SearchResults() {
     fetchResults()
   }, [name, type])
 
+  const handleVipSearch = () => {
+    Navigate(
+      `/vipSearch?name=${encodeURIComponent(name)}&type=${encodeURIComponent(
+        type
+      )}`
+    )
+  }
+
   return (
     <div className='p-4'>
-      <h1 className='text-3xl font-bold mb-4'>Resultados de búsqueda</h1>
+      <h2 className='text-3xl font-bold mb-4'>Resultados de búsqueda</h2>
       {loading && <p>Cargando resultados...</p>}
       {error && <p className='text-red-500'>{error}</p>}
       {!loading && products.length === 0 && (
-        <p>No se encontraron productos. Intenta con otro término.</p>
+        <section
+          className='flex flex-col items-center text-center p-4'
+          aria-live='polite'
+        >
+          <h3 className='text-xl font-bold mb-2'>
+            No se encontraron productos.
+          </h3>
+          <p className='mb-1'>revisa la ortografia</p>
+          <p className='mb-1'>Intenta con otro término.</p>
+          <p className='mb-4'>
+            O prueba la búsqueda VIP para obtener resultados adicionales.
+          </p>
+          <button
+            type='button'
+            onClick={handleVipSearch}
+            className='mt-4 bg-green-500 text-white px-3 py-1 rounded text-sm'
+          >
+            Ir a VIP Search
+          </button>
+        </section>
       )}
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {products.map((product) => (
           <ProductCard key={product._id || product.asin} product={product} />
         ))}
-      </div>
+      </section>
     </div>
   )
 }

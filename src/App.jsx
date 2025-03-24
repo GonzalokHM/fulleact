@@ -28,7 +28,6 @@ function App() {
           <Route path='/search-results' element={<SearchResults />} />
           <Route path='/getvip' element={<GetVip />} />
           <Route path='*' element={<NotFound />} />
-
           <Route
             path='/wishlist'
             element={

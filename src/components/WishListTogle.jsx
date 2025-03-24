@@ -1,11 +1,35 @@
+import { addToWishlist, removeFromWishlist } from '../api/wishList'
 import useStore from '../store/useStore'
 
 function WishlistToggle({ productId, className = '' }) {
-  const { wishlist, toggleWishlist } = useStore()
+  const { wishlist, setWishlist, user } = useStore()
   const isInWishlist = wishlist.includes(productId)
 
-  const handleClick = () => {
-    toggleWishlist(productId)
+  const handleClick = async () => {
+    if (!user) {
+      if (isInWishlist) {
+        setWishlist(wishlist.filter((id) => id !== productId))
+      } else {
+        setWishlist([...wishlist, productId])
+      }
+      return
+    }
+
+    if (isInWishlist) {
+      const { response, error } = await removeFromWishlist(productId)
+      if (response) {
+        setWishlist(wishlist.filter((id) => id !== productId))
+      } else {
+        console.error(error)
+      }
+    } else {
+      const { response, error } = await addToWishlist(user._id, productId)
+      if (response) {
+        setWishlist([...wishlist, productId])
+      } else {
+        console.error(error)
+      }
+    }
   }
 
   return (

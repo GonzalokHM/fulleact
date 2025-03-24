@@ -4,8 +4,10 @@ import {
   getTopSellingPerCategory
 } from '../api/products'
 import Carousel from '../components/Carousel'
+import useStore from '../store/useStore'
 
 function Home() {
+  const { user } = useStore()
   const [uniqueProducts, setUniqueProducts] = useState([])
   const [topSellingProducts, setTopSellingProducts] = useState([])
   const [loadingUnique, setLoadingUnique] = useState(false)
@@ -52,6 +54,18 @@ function Home() {
           <h1 className='text-4xl font-bold'>
             Ahorra y encuentra lo que necesites
           </h1>
+          {user && (
+            <div className='flex flex-col items-center justify-center mt-4'>
+              <p className='text-xl'>Hola, {user.username}</p>
+              {user.avatar && (
+                <img
+                  src={user.avatar}
+                  alt='Avatar de usuario'
+                  className='w-12 h-12 rounded-full object-cover mr-2'
+                />
+              )}
+            </div>
+          )}
           <p className='mt-2 text-xl'>Descubre las mejores ofertas en Amazon</p>
         </div>
       </section>

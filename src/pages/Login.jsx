@@ -2,23 +2,30 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import useStore from '../store/useStore'
+import useWishlistSync from '../hooks/useWishListSync'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { login, authLoading, authError } = useAuth()
+  const { wishlist: localWishlist } = useStore()
+  const { syncWishlist } = useWishlistSync()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await login({ email, password })
     if (res) {
+      if (localWishlist.length > 0) {
+        await syncWishlist(res.user._id)
+      }
       navigate('/')
     }
   }
 
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container flex flex-col justify-center text-center mx-auto p-4'>
       <h1 className='text-3xl font-bold mb-4'>Iniciar Sesión</h1>
       {authError && <p className='text-red-500 mb-4'>{authError}</p>}
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>

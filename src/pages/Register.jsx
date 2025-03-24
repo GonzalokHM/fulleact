@@ -1,18 +1,25 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import useStore from '../store/useStore'
+import useWishlistSync from '../hooks/useWishListSync'
 
 function Register() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { register, authLoading, authError } = useAuth()
+  const { wishlist: localWishlist } = useStore()
+  const { syncWishlist } = useWishlistSync()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await register({ username, email, password })
     if (res) {
+      if (localWishlist.length > 0) {
+        await syncWishlist(res.user._id)
+      }
       navigate('/')
     }
   }

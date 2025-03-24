@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { filterProducts } from '../api/products'
 
 function SearchForm() {
   const navigate = useNavigate()
@@ -10,32 +9,16 @@ function SearchForm() {
   const handleSearch = async (e) => {
     e.preventDefault()
     if (!searchTerm.trim()) return
-    try {
-      let searchParams =
-        filterType === 'category'
-          ? { categoriaName: searchTerm }
-          : { name: searchTerm }
-      const { response, error } = await filterProducts(searchParams)
-      if (error) {
-        console.error(error)
-      } else {
-        if (response.length > 0) {
-          navigate(
-            `/search-results?name=${encodeURIComponent(
-              searchTerm
-            )}&type=${encodeURIComponent(filterType)}`
-          )
-        } else {
-          navigate(
-            `/vipSearch?name=${encodeURIComponent(
-              searchTerm
-            )}&type=${encodeURIComponent(filterType)}`
-          )
-        }
-      }
-    } catch (err) {
-      console.error(err)
-    }
+
+    filterType === 'category'
+      ? { categoriaName: searchTerm }
+      : { name: searchTerm }
+
+    navigate(
+      `/search-results?name=${encodeURIComponent(
+        searchTerm
+      )}&type=${encodeURIComponent(filterType)}`
+    )
   }
 
   return (

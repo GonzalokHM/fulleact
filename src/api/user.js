@@ -3,10 +3,15 @@ import { API } from './api'
 export const getUsers = () => API({ endpoint: '/users' })
 
 export const updateUser = (userData) => {
-  const formData = new FormData()
-  Object.keys(userData).forEach((key) => {
-    formData.append(key, userData[key])
-  })
+  let formData
+  if (userData instanceof FormData) {
+    formData = userData
+  } else {
+    formData = new FormData()
+    Object.keys(userData).forEach((key) => {
+      formData.append(key, userData[key])
+    })
+  }
 
   return API({
     endpoint: '/users',

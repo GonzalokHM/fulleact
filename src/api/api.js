@@ -10,7 +10,7 @@ export const API = async ({
     Authorization: `Bearer ${localStorage.getItem('token')}`
   }
 
-  if (content_type) {
+  if (content_type && !(body instanceof FormData)) {
     headers['Content-Type'] = 'application/json'
     if (body) body = JSON.stringify(body)
   }

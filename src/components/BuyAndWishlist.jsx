@@ -1,6 +1,6 @@
 import WishlistToggle from './WishListTogle'
 
-function BuyAndWishlist({ product }) {
+function BuyAndWishlist({ product, showWishlistToggle = true }) {
   return (
     <div className='flex items-center space-x-2'>
       <a
@@ -11,7 +11,7 @@ function BuyAndWishlist({ product }) {
       >
         Comprar
       </a>
-      <WishlistToggle productId={product.asin} />
+      {showWishlistToggle && <WishlistToggle productId={product._id} />}
     </div>
   )
 }

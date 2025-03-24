@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import useStore from '../store/useStore'
-import { getWishlist, removeFromWishlist } from '../api/wishlist'
 import ProductCard from '../components/ProductCard'
+import { getWishlist, removeFromWishlist } from '../api/wishList'
 
 function Wishlist() {
-  const { user } = useStore()
+  const { user, setWishlist } = useStore()
   const [wishlistItems, setWishlistItems] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -19,19 +19,23 @@ function Wishlist() {
         setError(error.message || 'Error al obtener la wishlist')
       } else {
         setWishlistItems(response)
+        const ids = response.map((item) => item.producto._id)
+        setWishlist(ids)
       }
       setLoading(false)
     }
 
     fetchWishlist()
-  }, [user])
+  }, [user, setWishlist])
 
-  const handleRemove = async (wishlistItemId) => {
-    const { response, error } = await removeFromWishlist(wishlistItemId)
+  const handleRemove = async (productId) => {
+    const { response, error } = await removeFromWishlist(productId)
     if (response) {
-      setWishlistItems(
-        wishlistItems.filter((item) => item._id !== wishlistItemId)
+      // Usamos función callback para actualizar el estado sin problemas
+      setWishlistItems((prev) =>
+        prev.filter((item) => item.producto._id !== productId)
       )
+      setWishlist((prev) => prev.filter((id) => id !== productId))
     } else {
       setError(error.message || 'Error al eliminar el producto de la wishlist')
     }
@@ -48,9 +52,9 @@ function Wishlist() {
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {wishlistItems.map((item) => (
             <div key={item._id} className='relative'>
-              <ProductCard product={item.product} />
+              <ProductCard product={item.producto} showWishlistToggle={false} />
               <button
-                onClick={() => handleRemove(item._id)}
+                onClick={() => handleRemove(item.producto._id)}
                 className='absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded'
               >
                 Quitar
