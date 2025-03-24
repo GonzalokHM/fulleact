@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import BuyAndWishlist from './BuyAndWishlist'
+import CompareButton from './CompareButton'
 
 function ProductCard({
   product,
@@ -28,6 +29,7 @@ function ProductCard({
   }
   return (
     <div className='border rounded shadow p-4 flex flex-col'>
+      <CompareButton productId={product._id} />
       <img
         src={product.img}
         alt={product.titulo}

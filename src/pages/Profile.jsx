@@ -82,13 +82,14 @@ function Profile() {
             className='w-16 h-16 rounded-full object-cover m-0.5'
           />
         )}
-        <button
-          onClick={handleLogout}
-          className='bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded'
-        >
-          Cerrar sesión
-        </button>
       </div>
+      {user && user.vip && (
+        <div className='mb-4'>
+          <span className='bg-yellow-500 text-black px-3 py-1 rounded text-sm font-bold'>
+            Cuenta VIP activada
+          </span>
+        </div>
+      )}
       {error && <p className='text-red-500 mb-4'>{error}</p>}
       {success && <p className='text-green-500 mb-4'>{success}</p>}
       <form onSubmit={handleSubmit} className='space-y-6'>
@@ -154,6 +155,12 @@ function Profile() {
           {loading ? 'Actualizando...' : 'Actualizar Perfil'}
         </button>
       </form>
+      <button
+        onClick={handleLogout}
+        className='bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-2'
+      >
+        Cerrar sesión
+      </button>
     </div>
   )
 }

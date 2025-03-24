@@ -25,7 +25,7 @@ function Register() {
   }
 
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container mx-auto p-4  flex flex-col justify-center text-center'>
       <h1 className='text-3xl font-bold mb-4'>Regístrate</h1>
       {authError && <p className='text-red-500 mb-4'>{authError}</p>}
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>

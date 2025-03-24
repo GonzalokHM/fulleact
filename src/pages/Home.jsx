@@ -56,7 +56,15 @@ function Home() {
           </h1>
           {user && (
             <div className='flex flex-col items-center justify-center mt-4'>
-              <p className='text-xl'>Hola, {user.username}</p>
+              <p className={`text-xl${user.vip ? 'font-bold' : ''}`}>
+                Hola, {user.username}
+                {user.vip && (
+                  <span className='bg-yellow-500 text-black px-2 py-1 rounded text-sm'>
+                    VIP
+                  </span>
+                )}
+              </p>
+
               {user.avatar && (
                 <img
                   src={user.avatar}

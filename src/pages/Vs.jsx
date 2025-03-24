@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import useStore from '../store/useStore'
-import { getProductByASIN } from '../api/products'
+import { getProductById } from '../api/products'
 import ComparisonTable from '../components/VsTable'
 
 function Vs() {
@@ -14,7 +14,7 @@ function Vs() {
       setLoading(true)
       setError('')
       try {
-        const productPromises = comparison.map((asin) => getProductByASIN(asin))
+        const productPromises = comparison.map((id) => getProductById(id))
         const results = await Promise.all(productPromises)
         const fetchedProducts = results.map((result) => result.response)
         setProducts(fetchedProducts)

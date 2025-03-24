@@ -6,7 +6,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <th className='p-4 border bg-gray-100'>Característica</th>
             {products.map((product) => (
-              <th key={product.asin} className='p-4 border bg-gray-100'>
+              <th key={product._id} className='p-4 border bg-gray-100'>
                 <div className='flex flex-col items-center'>
                   <img
                     src={product.img}
@@ -17,7 +17,7 @@ function ComparisonTable({ products, removeComparison }) {
                     {product.titulo}
                   </span>
                   <button
-                    onClick={() => removeComparison(product.asin)}
+                    onClick={() => removeComparison(product._id)}
                     className='mt-2 text-red-500 text-xs'
                   >
                     Quitar
@@ -31,7 +31,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='p-4 border font-bold'>Precio</td>
             {products.map((product) => (
-              <td key={product.asin} className='p-4 border text-center'>
+              <td key={product._id} className='p-4 border text-center'>
                 ${product.precio}
               </td>
             ))}
@@ -39,7 +39,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='p-4 border font-bold'>Marca</td>
             {products.map((product) => (
-              <td key={product.asin} className='p-4 border text-center'>
+              <td key={product._id} className='p-4 border text-center'>
                 {product.marca}
               </td>
             ))}
@@ -47,7 +47,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='p-4 border font-bold'>Puntuación</td>
             {products.map((product) => (
-              <td key={product.asin} className='p-4 border text-center'>
+              <td key={product._id} className='p-4 border text-center'>
                 {product.puntuacion}
               </td>
             ))}
@@ -55,7 +55,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='p-4 border font-bold'>Categoría</td>
             {products.map((product) => (
-              <td key={product.asin} className='p-4 border text-center'>
+              <td key={product._id} className='p-4 border text-center'>
                 {product.categoria ? product.categoria.nombre : 'N/A'}
               </td>
             ))}
@@ -63,7 +63,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='p-4 border font-bold'>Descripción</td>
             {products.map((product) => (
-              <td key={product.asin} className='p-4 border'>
+              <td key={product._id} className='p-4 border'>
                 {product.descripcion}
               </td>
             ))}
