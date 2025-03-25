@@ -1,37 +1,53 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { vipSearch } from '../api/products'
 import ProductCard from '../components/ProductCard'
 
 function VipSearch() {
-  const [searchTerm, setSearchTerm] = useState('')
+  const { search } = useLocation()
+  const queryParams = new URLSearchParams(search)
+  const initialName = queryParams.get('name') || ''
+
+  const [searchTerm, setSearchTerm] = useState(initialName)
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const handleSearch = async (e) => {
-    e.preventDefault()
-    if (!searchTerm.trim()) {
-      setError('Introduce un término de búsqueda')
-      return
-    }
-    setLoading(true)
-    setError('')
-    try {
-      const { response, error } = await vipSearch(searchTerm)
-      if (error) {
-        setError(error.message || 'Error al buscar productos')
-      } else {
-        setProducts(response)
+  const handleSearch = useCallback(
+    async (e) => {
+      if (e && typeof e.preventDefault === 'function') {
+        e.preventDefault()
       }
-    } catch (err) {
-      console.error(err)
-      setError('Error al buscar productos. Intenta de nuevo.')
+      if (!searchTerm.trim()) {
+        setError('Introduce un término de búsqueda')
+        return
+      }
+      setLoading(true)
+      setError('')
+      try {
+        const { response, error } = await vipSearch(searchTerm)
+        if (error) {
+          setError(error.message || 'Error al buscar productos')
+        } else {
+          setProducts(response)
+        }
+      } catch (err) {
+        console.error(err)
+        setError('Error al buscar productos. Intenta de nuevo.')
+      }
+      setLoading(false)
+    },
+    [searchTerm]
+  )
+
+  useEffect(() => {
+    if (initialName.trim()) {
+      handleSearch()
     }
-    setLoading(false)
-  }
+  }, [initialName, handleSearch])
 
   return (
-    <div className='p-4'>
+    <div className='p-4 flex flex-col items-center'>
       <h1 className='text-3xl font-bold mb-4'>Búsqueda VIP de Productos</h1>
       <form onSubmit={handleSearch} className='mb-4'>
         <input
@@ -55,7 +71,7 @@ function VipSearch() {
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {products.map((product) => (
             <ProductCard
-              key={product._id || product.asin}
+              key={product._id}
               product={product}
               showVipPrices={true}
             />

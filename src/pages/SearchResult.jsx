@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { filterProducts } from '../api/products'
 import ProductCard from '../components/ProductCard'
 
 function SearchResults() {
   const { search } = useLocation()
+  const navigate = useNavigate()
   const queryParams = new URLSearchParams(search)
   const name = queryParams.get('name') || ''
   const type = queryParams.get('type') || 'name'
@@ -36,7 +37,7 @@ function SearchResults() {
   }, [name, type])
 
   const handleVipSearch = () => {
-    Navigate(
+    navigate(
       `/vipSearch?name=${encodeURIComponent(name)}&type=${encodeURIComponent(
         type
       )}`

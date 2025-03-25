@@ -42,7 +42,7 @@ function Home() {
   }, [])
 
   return (
-    <div>
+    <>
       <section
         className="relative w-full h-[300px] flex items-center justify-center bg-cover bg-center
         bg-[url('https://picsum.photos/400/300/?blur')]
@@ -78,7 +78,7 @@ function Home() {
         </div>
       </section>
 
-      <div className='container mx-auto px-4'>
+      <section className='container mx-auto px-4'>
         {loadingUnique ? (
           <p>Cargando productos...</p>
         ) : (
@@ -91,8 +91,8 @@ function Home() {
           <Carousel title='Top ventas' products={topSellingProducts} />
         )}
         {error && <p className='text-red-500'>{error}</p>}
-      </div>
-    </div>
+      </section>
+    </>
   )
 }
 

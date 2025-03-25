@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { getProductByASIN } from '../api/products'
 import useStore from '../store/useStore'
 import BuyAndWishlist from '../components/BuyAndWishlist'
+import Stars from '../components/stars/Stars'
 
 function Details() {
   const { id } = useParams() // asin
@@ -60,7 +61,7 @@ function Details() {
           <div className='mt-4 py-2'>
             <BuyAndWishlist product={product} />
           </div>
-          <p className='mb-2'>Puntuación: {product.puntuacion}</p>
+          <Stars rating={product.puntuacion} />
           <p>{product.descripcion}</p>
           <p className='mb-2'>Marca: {product.marca}</p>
           <div className='flex items-center mb-2'>
