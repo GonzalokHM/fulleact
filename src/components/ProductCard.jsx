@@ -17,25 +17,23 @@ function ProductCard({
           Precio original:{' '}
           <span className='line-through'>${originalPrice}</span>
         </p>
-        <p className='text-green-700 font-bold text-lg'>
+        <p className='vipPrice text-lg'>
           Precio VIP: ${product.precio.toFixed(2)}
         </p>
       </>
     )
   } else {
-    priceContent = (
-      <p className='text-gray-700 mb-2'>Precio: ${product.precio}</p>
-    )
+    priceContent = <p className='priceText'>Precio: ${product.precio}</p>
   }
   return (
-    <div className='border rounded shadow p-4 flex flex-col'>
+    <div className='border2 flex flex-col justify-between'>
       <CompareButton productId={product._id} />
       <img
         src={product.img}
         alt={product.titulo}
         className='w-full h-48 object-cover mb-4'
       />
-      <h3>{product.titulo}</h3>
+      <h3 className='line-clamp-3'>{product.titulo}</h3>
       {priceContent}
       <div className='flex justify-between'>
         <BuyAndWishlist

@@ -41,20 +41,20 @@ function Wishlist() {
   }
 
   return (
-    <div className='p-4'>
-      <h2 className='text-3xl font-bold mb-4'>Mi Wishlist</h2>
+    <div className='contPading'>
+      <h2>Mi Wishlist</h2>
       {loading && <p>Cargando wishlist...</p>}
       {error && <p className='text-red-500'>{error}</p>}
       {!loading && wishlistItems.length === 0 ? (
         <p>No tienes productos en la wishlist.</p>
       ) : (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        <div className='gridRes'>
           {wishlistItems.map((item) => (
             <div key={item._id} className='relative'>
               <ProductCard product={item.producto} showWishlistToggle={false} />
               <button
                 onClick={() => handleRemove(item.producto._id)}
-                className='absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded'
+                className='btnRemoveWish'
               >
                 Quitar
               </button>

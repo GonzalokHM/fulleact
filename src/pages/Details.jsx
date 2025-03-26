@@ -36,7 +36,7 @@ function Details() {
   const vipPrice = isVip ? (normalPrice * discountRate).toFixed(2) : normalPrice
 
   return (
-    <div className='p-4'>
+    <div className='contPading'>
       <h1 className='mb-4'>{product.titulo}</h1>
       <article className='flex flex-col md:flex-row'>
         <img
@@ -47,14 +47,14 @@ function Details() {
         <section>
           {isVip ? (
             <>
-              <p className='text-xl mb-2'>
+              <p className='priceText'>
                 Precio original:{' '}
                 <span className='line-through'>${normalPrice.toFixed(2)}</span>
               </p>
-              <p className='vipPrice'>Precio VIP: ${vipPrice}</p>
+              <p className='priceText vipPrice'>Precio VIP: ${vipPrice}</p>
             </>
           ) : (
-            <p className='text-xl mb-2'>Precio: ${normalPrice}</p>
+            <p className='priceText'>Precio: ${normalPrice}</p>
           )}
           <section className='mt-4 py-2'>
             <BuyAndWishlist product={product} />

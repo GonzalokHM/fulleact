@@ -63,7 +63,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='vstd'>Descripción</td>
             {products.map((product) => (
-              <td key={product._id} className='p-4 border'>
+              <td key={product._id} className='contPading border'>
                 {product.descripcion}
               </td>
             ))}

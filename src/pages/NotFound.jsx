@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function NotFound() {
   return (
-    <section className='flexColCent bg-red-400 p-4'>
+    <section className='flexColCent bg-red-400 contPading'>
       <h1>404</h1>
       <h3>Página no encontrada</h3>
       <Link to='/' className='btnInf'>

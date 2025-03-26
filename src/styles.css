@@ -14,7 +14,12 @@
   }
 }
 
+/* utils  */
 /* Buttons */
+.btnRemoveWish {
+  @apply absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded;
+}
+
 .btnDeleteVs {
   @apply mt-4 px-4 py-2 bg-red-500 rounded text-white font-bold;
 }
@@ -35,9 +40,38 @@
   @apply px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600;
 }
 
-/* utils */
+/* borders  */
+
+.border1 {
+  @apply border rounded px-2 py-1 text-sm;
+}
+.border2 {
+  @apply border rounded shadow p-4;
+}
+.imputBorder {
+  @apply w-full border rounded px-2 py-1;
+}
+
+.contPading {
+  @apply p-4;
+}
+/* layout  */
+.flexColCent {
+  @apply flex flex-col justify-center text-center items-center;
+}
+.flexRes {
+  @apply flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-2;
+}
+.gridRes {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+
+/* text  */
+.priceText {
+  @apply text-xl mb-2;
+}
 .vipPrice {
-  @apply text-xl mb-2 text-green-700 font-bold;
+  @apply text-green-700 font-bold;
 }
 
 .errortext {
@@ -46,18 +80,7 @@
 .succestext {
   @apply text-green-500 mb-4;
 }
-
-.border1 {
-  @apply border rounded px-2 py-1 text-sm;
-}
-.flexColCent {
-  @apply flex flex-col justify-center text-center items-center;
-}
-
-.imputBorder {
-  @apply w-full border rounded px-2 py-1;
-}
-
+/* pages */
 /* Vs  */
 .vsth {
   @apply p-4 border bg-gray-100;
@@ -85,6 +108,9 @@ lg:bg-[url('https://picsum.photos/1200/300/?blur')];
 .container {
   @apply mx-auto px-4;
 }
+.hoverH {
+  @apply hover:text-blue-500;
+}
 
 /* Profile */
 .avatarPrev {
@@ -98,8 +124,15 @@ lg:bg-[url('https://picsum.photos/1200/300/?blur')];
   @apply block mb-2 font-medium;
 }
 
-/* .heart{@apply h-6 w-6} */
+/* wish  */
 
-/* .priceText{@apply text-xl mb-2} */
+.heart {
+  @apply h-6 w-6;
+}
+
+/* footer  */
+footer {
+  @apply bg-gray-800 text-white py-2 mt-8;
+}
 
 /* .productContainerWishVipSresults {@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4} */

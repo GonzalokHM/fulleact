@@ -22,10 +22,7 @@ function SearchForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSearch}
-      className='flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-2 '
-    >
+    <form onSubmit={handleSearch} className=' flexRes'>
       <select
         value={filterType}
         onChange={(e) => setFilterType(e.target.value)}

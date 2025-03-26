@@ -61,11 +61,11 @@ function VipSearch() {
           {loading ? 'Buscando...' : 'Buscar'}
         </button>
       </form>
-      {error && <p className='text-red-500 mb-4'>{error}</p>}
+      {error && <p className='errortext'>{error}</p>}
       {products.length === 0 && !loading ? (
         <p>No se encontraron productos.</p>
       ) : (
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        <div className='gridRes'>
           {products.map((product) => (
             <ProductCard
               key={product._id}

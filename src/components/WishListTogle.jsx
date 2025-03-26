@@ -41,7 +41,7 @@ function WishlistToggle({ productId, className = '' }) {
       {isInWishlist ? (
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='h-6 w-6 text-red-500'
+          className='heart text-red-500'
           viewBox='0 0 20 20'
           fill='currentColor'
         >
@@ -54,7 +54,7 @@ function WishlistToggle({ productId, className = '' }) {
       ) : (
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='h-6 w-6 text-gray-500'
+          className='heart text-gray-500'
           fill='none'
           viewBox='0 0 24 24'
           stroke='currentColor'

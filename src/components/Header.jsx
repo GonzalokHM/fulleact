@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <header className='bg-white shadow mb-4'>
-      <div className='container mx-auto py-2 flex items-center justify-between'>
+      <div className='container py-2 flex items-center justify-between'>
         <Link to='/' className='flex items-center '>
           <img src='/logo.png' alt='Logo' className='w-10 h-10 mr-1' />
           <span className='font-bold text-xl'>Comprador</span>

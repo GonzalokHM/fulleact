@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer className='bg-gray-800 text-white py-2 mt-8 '>
-      <div className='container mx-auto px-4 text-center'>
+    <footer>
+      <div className='container text-center'>
         <p>
           &copy; {new Date().getFullYear()} Comparador de Productos. Todos los
           derechos reservados.

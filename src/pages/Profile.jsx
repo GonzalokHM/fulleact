@@ -72,7 +72,7 @@ function Profile() {
   }
 
   return (
-    <div className='container flexColCent p-4 max-w-md'>
+    <div className='container contPading flexColCent max-w-md'>
       <div className='flex items-center mb-6'>
         <h1>Mi Perfil</h1>
         {user && user.avatar && (
