@@ -19,9 +19,11 @@
 .btnRemoveWish {
   @apply absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded;
 }
-
+.btnRemoveComp {
+  @apply mt-2 text-red-500 hover:text-red-700 text-xs;
+}
 .btnDeleteVs {
-  @apply mt-4 px-4 py-2 bg-red-500 rounded text-white font-bold;
+  @apply mt-6 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow transition;
 }
 
 .btnRegister {
@@ -46,7 +48,7 @@
   @apply border rounded px-2 py-1 text-sm;
 }
 .border2 {
-  @apply border rounded shadow p-4;
+  @apply border rounded-xl shadow p-4;
 }
 .imputBorder {
   @apply w-full border rounded px-2 py-1;
@@ -83,11 +85,11 @@
 /* pages */
 /* Vs  */
 .vsth {
-  @apply p-4 border bg-gray-100;
+  @apply p-4 border bg-blue-50 text-sm text-gray-700 font-semibold;
 }
 
 .vstd {
-  @apply p-4 border font-bold;
+  @apply p-4 border font-bold bg-amber-50 text-sm text-left;
 }
 .vstdI {
   @apply p-4 border text-center;
@@ -121,7 +123,7 @@ lg:bg-[url('https://picsum.photos/1200/300/?blur')];
   @apply w-full border rounded px-3 py-2 text-center focus:outline-none focus:ring focus:border-blue-300;
 }
 .profileLabel {
-  @apply block mb-2 font-medium;
+  @apply block mb-2 px-1 font-medium;
 }
 
 /* wish  */
@@ -132,7 +134,22 @@ lg:bg-[url('https://picsum.photos/1200/300/?blur')];
 
 /* footer  */
 footer {
-  @apply bg-gray-800 text-white py-2 mt-8;
+  @apply bg-gray-800 text-white py-2;
 }
 
-/* .productContainerWishVipSresults {@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4} */
+/* Blur  */
+.backgBlur {
+  @apply bg-white/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+}
+.backgBlur2 {
+  @apply bg-yellow-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+}
+.backgBlur3 {
+  @apply bg-blue-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+}
+.backgBlur4 {
+  @apply bg-gray-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+}
+.backgBlur5 {
+  @apply bg-red-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+}

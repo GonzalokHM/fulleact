@@ -46,15 +46,15 @@ function SearchResults() {
 
   return (
     <div className='contPading'>
-      <h2>Resultados de búsqueda</h2>
+      <h2 className='backgBlur2 w-fit px-1'>Resultados de búsqueda</h2>
       {loading && <p>Cargando resultados...</p>}
       {error && <p className='errortext'>{error}</p>}
       {!loading && products.length === 0 && (
         <section className='flexColCent contPading' aria-live='polite'>
-          <h3>No se encontraron productos.</h3>
-          <p className='mb-1'>revisa la ortografia</p>
-          <p className='mb-1'>Intenta con otro término.</p>
-          <p className='mb-4'>
+          <h3 className='backgBlur5'>No se encontraron productos.</h3>
+          <p className='mb-1 backgBlur'>revisa la ortografia</p>
+          <p className='mb-1 backgBlur'>Intenta con otro término.</p>
+          <p className='mb-4 backgBlur'>
             O prueba la búsqueda VIP para obtener resultados adicionales.
           </p>
           <button

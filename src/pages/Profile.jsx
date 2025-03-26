@@ -91,34 +91,34 @@ function Profile() {
       {error && <p className='errortext'>{error}</p>}
       {success && <p className='succestext'>{success}</p>}
       <form onSubmit={handleSubmit} className='space-y-6'>
-        <div>
-          <label htmlFor='username' className='profileLabel'>
+        <div className='flexColCent'>
+          <label htmlFor='username' className='profileLabel backgBlur'>
             Nombre de usuario
           </label>
           <input
             type='text'
             id='username'
-            className='profileInput'
+            className='profileInput backgBlur3'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor='email' className='profileLabel'>
+        <div className='flexColCent'>
+          <label htmlFor='email' className='profileLabel backgBlur'>
             Correo electrónico
           </label>
           <input
             type='email'
             id='email'
-            className='profileInput'
+            className='profileInput backgBlur3'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
         <div className='justify-items-center'>
-          <label htmlFor='avatar' className='profileLabel'>
+          <label htmlFor='avatar' className='profileLabel backgBlur'>
             Avatar (imagen)
           </label>
           <div className='avatarPrev'>
@@ -141,7 +141,7 @@ function Profile() {
               onChange={handleAvatarChange}
             />
           </div>
-          <p className='text-sm text-gray-600 mt-2'>
+          <p className='text-sm text-gray-600 mt-2 backgBlur2'>
             Haz clic en el área para seleccionar tu avatar.
           </p>
         </div>

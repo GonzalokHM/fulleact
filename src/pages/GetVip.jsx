@@ -31,7 +31,7 @@ function GetVip() {
   }
 
   return (
-    <div className='p-4 flexColCent'>
+    <div className='contPading flexColCent'>
       <h1 className='mb-4'>Prueba VIP Gratis</h1>
       <p className='mb-4 text-center'>
         ¡Disfruta de funciones exclusivas con la suscripción VIP por tiempo

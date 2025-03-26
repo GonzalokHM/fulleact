@@ -42,15 +42,15 @@ function Wishlist() {
 
   return (
     <div className='contPading'>
-      <h2>Mi Wishlist</h2>
+      <h2 className='backgBlur2 px-1.5 w-fit'>Mi Wishlist</h2>
       {loading && <p>Cargando wishlist...</p>}
-      {error && <p className='text-red-500'>{error}</p>}
+      {error && <p className='errortext'>{error}</p>}
       {!loading && wishlistItems.length === 0 ? (
         <p>No tienes productos en la wishlist.</p>
       ) : (
         <div className='gridRes'>
           {wishlistItems.map((item) => (
-            <div key={item._id} className='relative'>
+            <div key={item._id} className='relative '>
               <ProductCard product={item.producto} showWishlistToggle={false} />
               <button
                 onClick={() => handleRemove(item.producto._id)}

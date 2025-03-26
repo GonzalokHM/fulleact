@@ -47,15 +47,15 @@ function VipSearch() {
   }, [initialName, handleSearch])
 
   return (
-    <div className='p-4 flexColCent'>
-      <h2>Búsqueda VIP de Productos</h2>
+    <div className='contPading flexColCent'>
+      <h2 className='backgBlur2 px-2'>Búsqueda VIP de Productos</h2>
       <form onSubmit={handleSearch} className='mb-4'>
         <input
           type='text'
           placeholder='Busca un producto...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className='px-4 py-2 border rounded w-64'
+          className='px-4 py-2 border rounded w-64 backgBlur'
         />
         <button type='submit' className='ml-2 btnVip'>
           {loading ? 'Buscando...' : 'Buscar'}

@@ -31,7 +31,7 @@ function Carousel({ title, products }) {
           {products.map((product) => (
             <div
               key={product._id}
-              className='min-w-[250px] flex justify-between snap-start'
+              className='min-w-[250px] flex justify-between snap-start '
             >
               {' '}
               <ProductCard product={product} />{' '}

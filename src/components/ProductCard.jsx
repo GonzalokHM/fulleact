@@ -26,7 +26,7 @@ function ProductCard({
     priceContent = <p className='priceText'>Precio: ${product.precio}</p>
   }
   return (
-    <div className='border2 flex flex-col justify-between'>
+    <div className='flex flex-col justify-between backgBlur'>
       <CompareButton productId={product._id} />
       <img
         src={product.img}
