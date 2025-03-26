@@ -26,10 +26,12 @@ function Register() {
 
   return (
     <div className='container flexColCent'>
-      <h1 className='text-3xl font-bold mb-4'>Regístrate</h1>
-      {authError && <p className='text-red-500 mb-4'>{authError}</p>}
+      <h1 className='text-3xl font-bold mb-4 backgBlur3 mt-3 px-2'>
+        Regístrate
+      </h1>
+      {authError && <p className='errortext'>{authError}</p>}
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
-        <div className='mb-4'>
+        <div className='mb-4 backgBlur'>
           <label htmlFor='username' className='block mb-1'>
             Nombre de usuario
           </label>
@@ -42,7 +44,7 @@ function Register() {
             required
           />
         </div>
-        <div className='mb-4'>
+        <div className='mb-4 backgBlur'>
           <label htmlFor='email' className='block mb-1'>
             Correo electrónico
           </label>
@@ -55,7 +57,7 @@ function Register() {
             required
           />
         </div>
-        <div className='mb-4'>
+        <div className='mb-4 backgBlur'>
           <label htmlFor='password' className='block mb-1'>
             Contraseña
           </label>
@@ -72,9 +74,9 @@ function Register() {
           {authLoading ? 'Registrando...' : 'Registrarse'}
         </button>
       </form>
-      <p className='mt-4 text-center'>
+      <p className='mt-4 text-center backgBlur px-2'>
         ¿Ya tienes cuenta?{' '}
-        <Link to='/login' className='text-blue-500'>
+        <Link to='/login' className='text-blue-500 '>
           Inicia Sesión
         </Link>
       </p>

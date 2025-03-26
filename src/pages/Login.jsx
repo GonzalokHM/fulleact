@@ -26,10 +26,10 @@ function Login() {
 
   return (
     <div className='container flexColCent'>
-      <h1>Iniciar Sesión</h1>
+      <h1 className='backgBlur2 mt-3 mb-3'>Iniciar Sesión</h1>
       {authError && <p className='errortext'>{authError}</p>}
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
-        <div className='mb-4'>
+        <div className='mb-4 backgBlur'>
           <label className='block mb-1' htmlFor='email'>
             Correo electrónico
           </label>
@@ -42,7 +42,7 @@ function Login() {
             required
           />
         </div>
-        <div className='mb-4'>
+        <div className='mb-4 backgBlur'>
           <label className='block mb-1' htmlFor='password'>
             Contraseña
           </label>
@@ -59,7 +59,7 @@ function Login() {
           {authLoading ? 'Iniciando...' : 'Iniciar Sesión'}
         </button>
       </form>
-      <p className='mt-4 text-center'>
+      <p className='mt-4 text-center backgBlur p-2'>
         ¿No tienes cuenta?
         <Link to='/register' className='text-blue-500'>
           Regístrate

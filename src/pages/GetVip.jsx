@@ -32,8 +32,8 @@ function GetVip() {
 
   return (
     <div className='contPading flexColCent'>
-      <h1 className='mb-4'>Prueba VIP Gratis</h1>
-      <p className='mb-4 text-center'>
+      <h1 className='mb-4 backgBlur2 '>Prueba VIP Gratis</h1>
+      <p className='mb-4 text-center backgBlur'>
         ¡Disfruta de funciones exclusivas con la suscripción VIP por tiempo
         limitado! Al activarla, tendrás acceso a rutas exclusivas y beneficios
         especiales.

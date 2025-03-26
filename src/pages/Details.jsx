@@ -37,12 +37,12 @@ function Details() {
 
   return (
     <div className='contPading'>
-      <h1 className='mb-4'>{product.titulo}</h1>
-      <article className='flex flex-col md:flex-row'>
+      <h1 className='mb-4 backgBlur2'>{product.titulo}</h1>
+      <article className='flex flex-col md:flex-row backgBlur'>
         <img
           src={product.img}
           alt={product.titulo}
-          className='w-full md:w-1/2 object-cover mb-4 md:mb-0 md:mr-4'
+          className='w-full md:w-1/2 object-cover mb-4 md:mb-0 md:mr-4 backgBlur'
         />
         <section>
           {isVip ? (
