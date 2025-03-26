@@ -15,11 +15,14 @@ const useStore = create(
       setWishlist: (newWishlist) => set({ wishlist: newWishlist }),
       toggleWishlist: (productId) =>
         set((state) => {
-          const exists = state.wishlist.includes(productId)
+          const currentWishlist = Array.isArray(state.wishlist)
+            ? state.wishlist
+            : []
+          const exists = currentWishlist.includes(productId)
           return {
             wishlist: exists
-              ? state.wishlist.filter((id) => id !== productId)
-              : [...state.wishlist, productId]
+              ? currentWishlist.filter((id) => id !== productId)
+              : [...currentWishlist, productId]
           }
         }),
 

@@ -3,14 +3,15 @@ import useStore from '../store/useStore'
 
 function WishlistToggle({ productId, className = '' }) {
   const { wishlist, setWishlist, user } = useStore()
-  const isInWishlist = wishlist.includes(productId)
+  const safeWishlist = Array.isArray(wishlist) ? wishlist : []
+  const isInWishlist = safeWishlist.includes(productId)
 
   const handleClick = async () => {
     if (!user) {
       if (isInWishlist) {
-        setWishlist(wishlist.filter((id) => id !== productId))
+        setWishlist(safeWishlist.filter((id) => id !== productId))
       } else {
-        setWishlist([...wishlist, productId])
+        setWishlist([...safeWishlist, productId])
       }
       return
     }
@@ -18,14 +19,14 @@ function WishlistToggle({ productId, className = '' }) {
     if (isInWishlist) {
       const { response, error } = await removeFromWishlist(productId)
       if (response) {
-        setWishlist(wishlist.filter((id) => id !== productId))
+        setWishlist(safeWishlist.filter((id) => id !== productId))
       } else {
         console.error(error)
       }
     } else {
       const { response, error } = await addToWishlist(user._id, productId)
       if (response) {
-        setWishlist([...wishlist, productId])
+        setWishlist([...safeWishlist, productId])
       } else {
         console.error(error)
       }
