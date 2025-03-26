@@ -45,12 +45,12 @@ function SearchResults() {
   }
 
   return (
-    <div className='p-4'>
+    <div className='contPading'>
       <h2>Resultados de búsqueda</h2>
       {loading && <p>Cargando resultados...</p>}
       {error && <p className='errortext'>{error}</p>}
       {!loading && products.length === 0 && (
-        <section className='flexColCent p-4' aria-live='polite'>
+        <section className='flexColCent contPading' aria-live='polite'>
           <h3>No se encontraron productos.</h3>
           <p className='mb-1'>revisa la ortografia</p>
           <p className='mb-1'>Intenta con otro término.</p>
@@ -68,7 +68,7 @@ function SearchResults() {
       )}
       <section className='gridRes'>
         {products.map((product) => (
-          <ProductCard key={product._id || product.asin} product={product} />
+          <ProductCard key={product._id} product={product} />
         ))}
       </section>
     </div>

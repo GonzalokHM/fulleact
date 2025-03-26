@@ -40,7 +40,7 @@ function ProductCard({
           product={product}
           showWishlistToggle={showWishlistToggle}
         />
-        <Link to={`/product/${product.asin}`} className='btnInf'>
+        <Link to={`/product/${product._id}`} className='btnInf'>
           Detalles
         </Link>
       </div>

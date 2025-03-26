@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getProductByASIN } from '../api/products'
+import { getProductById } from '../api/products'
 import useStore from '../store/useStore'
 import BuyAndWishlist from '../components/BuyAndWishlist'
 import Stars from '../components/stars/Stars'
 
 function Details() {
-  const { id } = useParams() // asin
+  const { id: product_id } = useParams() // asin
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -15,7 +15,7 @@ function Details() {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true)
-      const { response, error } = await getProductByASIN(id)
+      const { response, error } = await getProductById(product_id)
       if (error) {
         setError(error.message || 'Error al obtener el producto')
       } else {
@@ -24,7 +24,7 @@ function Details() {
       setLoading(false)
     }
     fetchProduct()
-  }, [id])
+  }, [product_id])
 
   if (loading) return <p>Cargando...</p>
   if (error) return <p className='errortext'>{error}</p>
