@@ -29,7 +29,7 @@ function SearchForm() {
       <select
         value={filterType}
         onChange={(e) => setFilterType(e.target.value)}
-        className='border rounded px-2 py-1 mr-2 text-sm focus:outline-none'
+        className='border1 mr-2 focus:outline-none'
       >
         <option value='name'>Nombre</option>
         <option value='category'>Categoría</option>
@@ -39,12 +39,9 @@ function SearchForm() {
         placeholder='Buscar producto...'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className='border rounded px-2 py-1 text-sm w-full md:w-auto'
+        className='border1 w-full md:w-auto'
       />
-      <button
-        type='submit'
-        className='ml-2 bg-blue-500 text-white px-3 py-1 rounded text-sm'
-      >
+      <button type='submit' className='btnInf'>
         Buscar
       </button>
     </form>

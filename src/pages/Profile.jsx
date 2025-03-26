@@ -72,9 +72,9 @@ function Profile() {
   }
 
   return (
-    <div className='container flex flex-col items-center text-center mx-auto p-4 max-w-md'>
+    <div className='container flexColCent p-4 max-w-md'>
       <div className='flex items-center mb-6'>
-        <h1 className='text-3xl font-bold'>Mi Perfil</h1>
+        <h1>Mi Perfil</h1>
         {user && user.avatar && (
           <img
             src={user.avatar}
@@ -85,45 +85,43 @@ function Profile() {
       </div>
       {user && user.vip && (
         <div className='mb-4'>
-          <span className='bg-yellow-500 text-black px-3 py-1 rounded text-sm font-bold'>
-            Cuenta VIP activada
-          </span>
+          <span className='viplogo '>Cuenta VIP activada</span>
         </div>
       )}
-      {error && <p className='text-red-500 mb-4'>{error}</p>}
-      {success && <p className='text-green-500 mb-4'>{success}</p>}
+      {error && <p className='errortext'>{error}</p>}
+      {success && <p className='succestext'>{success}</p>}
       <form onSubmit={handleSubmit} className='space-y-6'>
         <div>
-          <label htmlFor='username' className='block mb-2 font-medium'>
+          <label htmlFor='username' className='profileLabel'>
             Nombre de usuario
           </label>
           <input
             type='text'
             id='username'
-            className='w-full border rounded px-3 py-2 text-center focus:outline-none focus:ring focus:border-blue-300'
+            className='profileInput'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor='email' className='block mb-2 font-medium'>
+          <label htmlFor='email' className='profileLabel'>
             Correo electrónico
           </label>
           <input
             type='email'
             id='email'
-            className='w-full border rounded  px-3 py-2 text-center focus:outline-none focus:ring focus:border-blue-300'
+            className='profileInput'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
         <div className='justify-items-center'>
-          <label htmlFor='avatar' className='block mb-2 font-medium'>
+          <label htmlFor='avatar' className='profileLabel'>
             Avatar (imagen)
           </label>
-          <div className='relative w-32 h-32 border-2 border-dashed rounded-full overflow-hidden flex items-center justify-center cursor-pointer hover:border-blue-500'>
+          <div className='avatarPrev'>
             {avatarPreview ? (
               <img
                 src={avatarPreview}
@@ -147,18 +145,11 @@ function Profile() {
             Haz clic en el área para seleccionar tu avatar.
           </p>
         </div>
-        <button
-          type='submit'
-          disabled={loading}
-          className='w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600'
-        >
+        <button type='submit' disabled={loading} className='w-full btnInf'>
           {loading ? 'Actualizando...' : 'Actualizar Perfil'}
         </button>
       </form>
-      <button
-        onClick={handleLogout}
-        className='bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-2'
-      >
+      <button onClick={handleLogout} className='btnLogout'>
         Cerrar sesión
       </button>
     </div>

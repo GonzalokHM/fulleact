@@ -25,9 +25,9 @@ function Login() {
   }
 
   return (
-    <div className='container flex flex-col justify-center text-center mx-auto p-4'>
-      <h1 className='text-3xl font-bold mb-4'>Iniciar Sesión</h1>
-      {authError && <p className='text-red-500 mb-4'>{authError}</p>}
+    <div className='container flexColCent'>
+      <h1>Iniciar Sesión</h1>
+      {authError && <p className='errortext'>{authError}</p>}
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <div className='mb-4'>
           <label className='block mb-1' htmlFor='email'>
@@ -36,7 +36,7 @@ function Login() {
           <input
             type='email'
             id='email'
-            className='w-full border rounded px-2 py-1'
+            className='imputBorder'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -49,17 +49,13 @@ function Login() {
           <input
             type='password'
             id='password'
-            className='w-full border rounded px-2 py-1'
+            className='imputBorder'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button
-          type='submit'
-          disabled={authLoading}
-          className='w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600'
-        >
+        <button type='submit' disabled={authLoading} className='w-full btnInf'>
           {authLoading ? 'Iniciando...' : 'Iniciar Sesión'}
         </button>
       </form>

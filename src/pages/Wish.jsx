@@ -31,7 +31,6 @@ function Wishlist() {
   const handleRemove = async (productId) => {
     const { response, error } = await removeFromWishlist(productId)
     if (response) {
-      // Usamos función callback para actualizar el estado sin problemas
       setWishlistItems((prev) =>
         prev.filter((item) => item.producto._id !== productId)
       )
@@ -43,7 +42,7 @@ function Wishlist() {
 
   return (
     <div className='p-4'>
-      <h1 className='text-3xl font-bold mb-4'>Mi Wishlist</h1>
+      <h2 className='text-3xl font-bold mb-4'>Mi Wishlist</h2>
       {loading && <p>Cargando wishlist...</p>}
       {error && <p className='text-red-500'>{error}</p>}
       {!loading && wishlistItems.length === 0 ? (

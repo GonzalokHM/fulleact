@@ -13,7 +13,7 @@ function Header() {
     <header className='bg-white shadow mb-4'>
       <div className='container mx-auto py-2 flex items-center justify-between'>
         <Link to='/' className='flex items-center '>
-          <img src='/logo.png' alt='Logo' className='w-10 h-10 mr-2' />
+          <img src='/logo.png' alt='Logo' className='w-10 h-10 mr-1' />
           <span className='font-bold text-xl'>Comprador</span>
         </Link>
         <div className='flex items-center'>
@@ -22,7 +22,7 @@ function Header() {
           </div>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className='md:hidden focus:outline-none'
+            className='md:hidden focus:outline-none '
             aria-label='Toggle menu'
           >
             <svg

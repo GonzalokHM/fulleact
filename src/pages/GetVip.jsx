@@ -31,19 +31,15 @@ function GetVip() {
   }
 
   return (
-    <div className='p-4 flex flex-col items-center'>
-      <h1 className='text-3xl font-bold mb-4'>Prueba VIP Gratis</h1>
+    <div className='p-4 flexColCent'>
+      <h1 className='mb-4'>Prueba VIP Gratis</h1>
       <p className='mb-4 text-center'>
         ¡Disfruta de funciones exclusivas con la suscripción VIP por tiempo
         limitado! Al activarla, tendrás acceso a rutas exclusivas y beneficios
         especiales.
       </p>
-      {error && <p className='text-red-500 mb-4'>{error}</p>}
-      <button
-        onClick={handleActivateVip}
-        disabled={loading}
-        className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-      >
+      {error && <p className='errortext'>{error}</p>}
+      <button onClick={handleActivateVip} disabled={loading} className='btnInf'>
         {loading ? 'Activando...' : 'Activar VIP'}
       </button>
     </div>

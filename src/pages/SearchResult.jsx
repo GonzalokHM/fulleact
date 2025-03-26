@@ -65,7 +65,7 @@ function SearchResults() {
           <button
             type='button'
             onClick={handleVipSearch}
-            className='mt-4 bg-green-500 text-white px-3 py-1 rounded text-sm'
+            className='mt-4 btnVip'
           >
             Ir a VIP Search
           </button>

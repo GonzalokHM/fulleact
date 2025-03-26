@@ -34,12 +34,12 @@ function Vs() {
 
   return (
     <div className='p-4'>
-      <h1 className='text-3xl font-bold mb-4'>Comparar Productos</h1>
+      <h2>Comparar Productos</h2>
       {comparison.length === 0 && (
         <p>No has seleccionado productos para comparar.</p>
       )}
       {loading && <p>Cargando productos...</p>}
-      {error && <p className='text-red-500'>{error}</p>}
+      {error && <p className='errortext'>{error}</p>}
       {products.length > 0 && (
         <ComparisonTable
           products={products}
@@ -47,10 +47,7 @@ function Vs() {
         />
       )}
       {comparison.length > 0 && (
-        <button
-          onClick={clearComparison}
-          className='mt-4 px-4 py-2 bg-gray-300 rounded'
-        >
+        <button onClick={clearComparison} className='btnDeleteVs'>
           Limpiar Comparación
         </button>
       )}

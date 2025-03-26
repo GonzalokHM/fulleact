@@ -27,7 +27,7 @@ function Details() {
   }, [id])
 
   if (loading) return <p>Cargando...</p>
-  if (error) return <p className='text-red-500'>{error}</p>
+  if (error) return <p className='errortext'>{error}</p>
   if (!product) return <p>Producto no encontrado.</p>
 
   const discountRate = 0.9
@@ -37,34 +37,32 @@ function Details() {
 
   return (
     <div className='p-4'>
-      <h1 className='text-3xl font-bold mb-4'>{product.titulo}</h1>
-      <div className='flex flex-col md:flex-row'>
+      <h1 className='mb-4'>{product.titulo}</h1>
+      <article className='flex flex-col md:flex-row'>
         <img
           src={product.img}
           alt={product.titulo}
           className='w-full md:w-1/2 object-cover mb-4 md:mb-0 md:mr-4'
         />
-        <div>
+        <section>
           {isVip ? (
             <>
               <p className='text-xl mb-2'>
                 Precio original:{' '}
                 <span className='line-through'>${normalPrice.toFixed(2)}</span>
               </p>
-              <p className='text-xl mb-2 text-green-700 font-bold'>
-                Precio VIP: ${vipPrice}
-              </p>
+              <p className='vipPrice'>Precio VIP: ${vipPrice}</p>
             </>
           ) : (
             <p className='text-xl mb-2'>Precio: ${normalPrice}</p>
           )}
-          <div className='mt-4 py-2'>
+          <section className='mt-4 py-2'>
             <BuyAndWishlist product={product} />
-          </div>
+          </section>
           <Stars rating={product.puntuacion} />
           <p>{product.descripcion}</p>
           <p className='mb-2'>Marca: {product.marca}</p>
-          <div className='flex items-center mb-2'>
+          <section className='flex items-center mb-2'>
             {product.categoria && (
               <Link
                 to={`/search-results?name=${encodeURIComponent(
@@ -80,9 +78,9 @@ function Details() {
                 <span>{product.categoria.nombre}</span>
               </Link>
             )}
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </article>
     </div>
   )
 }

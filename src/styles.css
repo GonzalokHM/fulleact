@@ -1,13 +1,105 @@
 @import 'tailwindcss';
 
-/* @custom-variant dark (&:where(.dark, .dark *));
+/* @custom-variant dark (&:where(.dark, .dark *)); */
 
 @layer base {
   h1 {
     @apply text-4xl font-bold;
   }
+  h2 {
+    @apply text-3xl font-bold mb-4;
+  }
+  h3 {
+    @apply text-xl font-bold mb-2;
+  }
 }
 
-.btn {
+/* Buttons */
+.btnDeleteVs {
+  @apply mt-4 px-4 py-2 bg-red-500 rounded text-white font-bold;
+}
+
+.btnRegister {
+  @apply w-full bg-green-500 text-white py-2 rounded hover:bg-green-600;
+}
+
+.btnInf {
   @apply px-4 py-2 rounded text-white bg-blue-500 hover:bg-blue-600;
-} */
+}
+
+.btnLogout {
+  @apply bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-2;
+}
+
+.btnVip {
+  @apply px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600;
+}
+
+/* utils */
+.vipPrice {
+  @apply text-xl mb-2 text-green-700 font-bold;
+}
+
+.errortext {
+  @apply text-red-500 mb-4;
+}
+.succestext {
+  @apply text-green-500 mb-4;
+}
+
+.border1 {
+  @apply border rounded px-2 py-1 text-sm;
+}
+.flexColCent {
+  @apply flex flex-col justify-center text-center items-center;
+}
+
+.imputBorder {
+  @apply w-full border rounded px-2 py-1;
+}
+
+/* Vs  */
+.vsth {
+  @apply p-4 border bg-gray-100;
+}
+
+.vstd {
+  @apply p-4 border font-bold;
+}
+.vstdI {
+  @apply p-4 border text-center;
+}
+
+/* Home */
+.welcomeImg {
+  @apply relative w-full h-[300px] flex items-center justify-center bg-cover bg-center
+bg-[url('https://picsum.photos/400/300/?blur')]
+sm:bg-[url('https://picsum.photos/800/300/?blur')]
+lg:bg-[url('https://picsum.photos/1200/300/?blur')];
+}
+.viplogo {
+  @apply bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold;
+}
+
+/* Header  */
+.container {
+  @apply mx-auto px-4;
+}
+
+/* Profile */
+.avatarPrev {
+  @apply relative w-32 h-32 border-2 border-dashed rounded-full overflow-hidden flex items-center justify-center cursor-pointer hover:border-blue-500;
+}
+
+.profileInput {
+  @apply w-full border rounded px-3 py-2 text-center focus:outline-none focus:ring focus:border-blue-300;
+}
+.profileLabel {
+  @apply block mb-2 font-medium;
+}
+
+/* .heart{@apply h-6 w-6} */
+
+/* .priceText{@apply text-xl mb-2} */
+
+/* .productContainerWishVipSresults {@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4} */

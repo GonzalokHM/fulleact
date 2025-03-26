@@ -35,17 +35,14 @@ function ProductCard({
         alt={product.titulo}
         className='w-full h-48 object-cover mb-4'
       />
-      <h2 className='text-xl font-bold mb-2'>{product.titulo}</h2>
+      <h3>{product.titulo}</h3>
       {priceContent}
       <div className='flex justify-between'>
         <BuyAndWishlist
           product={product}
           showWishlistToggle={showWishlistToggle}
         />
-        <Link
-          to={`/product/${product.asin}`}
-          className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded'
-        >
+        <Link to={`/product/${product.asin}`} className='btnInf'>
           Detalles
         </Link>
       </div>

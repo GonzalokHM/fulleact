@@ -25,7 +25,7 @@ function Register() {
   }
 
   return (
-    <div className='container mx-auto p-4  flex flex-col justify-center text-center'>
+    <div className='container flexColCent'>
       <h1 className='text-3xl font-bold mb-4'>Regístrate</h1>
       {authError && <p className='text-red-500 mb-4'>{authError}</p>}
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
@@ -36,7 +36,7 @@ function Register() {
           <input
             type='text'
             id='username'
-            className='w-full border rounded px-2 py-1'
+            className='imputBorder'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -49,7 +49,7 @@ function Register() {
           <input
             type='email'
             id='email'
-            className='w-full border rounded px-2 py-1'
+            className='imputBorder'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -62,17 +62,13 @@ function Register() {
           <input
             type='password'
             id='password'
-            className='w-full border rounded px-2 py-1'
+            className='imputBorder'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button
-          type='submit'
-          disabled={authLoading}
-          className='w-full bg-green-500 text-white py-2 rounded hover:bg-green-600'
-        >
+        <button type='submit' disabled={authLoading} className='btnRegister'>
           {authLoading ? 'Registrando...' : 'Registrarse'}
         </button>
       </form>

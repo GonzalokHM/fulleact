@@ -4,10 +4,10 @@ function ComparisonTable({ products, removeComparison }) {
       <table className='min-w-full border-collapse'>
         <thead>
           <tr>
-            <th className='p-4 border bg-gray-100'>Característica</th>
+            <th className='vsth'>Característica</th>
             {products.map((product) => (
-              <th key={product._id} className='p-4 border bg-gray-100'>
-                <div className='flex flex-col items-center'>
+              <th key={product._id} className='vsth'>
+                <div className='flexColCent'>
                   <img
                     src={product.img}
                     alt={product.titulo}
@@ -29,39 +29,39 @@ function ComparisonTable({ products, removeComparison }) {
         </thead>
         <tbody>
           <tr>
-            <td className='p-4 border font-bold'>Precio</td>
+            <td className='vstd'>Precio</td>
             {products.map((product) => (
-              <td key={product._id} className='p-4 border text-center'>
+              <td key={product._id} className='vstdI'>
                 ${product.precio}
               </td>
             ))}
           </tr>
           <tr>
-            <td className='p-4 border font-bold'>Marca</td>
+            <td className='vstd'>Marca</td>
             {products.map((product) => (
-              <td key={product._id} className='p-4 border text-center'>
+              <td key={product._id} className='vstdI'>
                 {product.marca}
               </td>
             ))}
           </tr>
           <tr>
-            <td className='p-4 border font-bold'>Puntuación</td>
+            <td className='vstd'>Puntuación</td>
             {products.map((product) => (
-              <td key={product._id} className='p-4 border text-center'>
+              <td key={product._id} className='vstdI'>
                 {product.puntuacion}
               </td>
             ))}
           </tr>
           <tr>
-            <td className='p-4 border font-bold'>Categoría</td>
+            <td className='vstd'>Categoría</td>
             {products.map((product) => (
-              <td key={product._id} className='p-4 border text-center'>
+              <td key={product._id} className='vstdI'>
                 {product.categoria ? product.categoria.nombre : 'N/A'}
               </td>
             ))}
           </tr>
           <tr>
-            <td className='p-4 border font-bold'>Descripción</td>
+            <td className='vstd'>Descripción</td>
             {products.map((product) => (
               <td key={product._id} className='p-4 border'>
                 {product.descripcion}
