@@ -1,7 +1,7 @@
 import HeaderNav from './HeaderNav'
 import SearchForm from './SearchForm'
 import HeaderLogo from './HeaderLogo'
-import useStore from '../store/useStore'
+import useStore from '../../store/useStore'
 import HeaderNavMobil from './HeaderNavMobil'
 import { memo } from 'react'
 

@@ -14,9 +14,7 @@ function Login() {
   const [error, submitAction, pending] = useActionState(async (_, formData) => {
     const email = formData.get('email')
     const password = formData.get('password')
-
     const { response, error } = await loginUser({ email, password })
-    console.log('📦 reg respuesta de API:', error)
 
     if (error) return error.error || 'Error al iniciar sesión'
 

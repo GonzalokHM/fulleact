@@ -1,4 +1,4 @@
-import useComparisonProduct from '../hooks/useComparisonProduct'
+import useComparisonProduct from '../../hooks/useComparisonProduct'
 
 function CompareButton({ productId }) {
   const { isInComparison, addComparison, removeComparison } =

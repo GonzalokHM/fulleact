@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import BuyAndWishlist from './BuyAndWishlist'
-import CompareButton from './CompareButton'
 import { memo } from 'react'
+import BuyAndWishlist from './BuyAndWishlist'
+import CompareButton from './vs/CompareButton'
 
 function ProductCard({
   product,

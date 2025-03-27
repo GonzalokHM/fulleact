@@ -19,7 +19,6 @@ function Register() {
     if (reg.error) return reg.error.error || 'Error al registrarse'
 
     const login = await loginUser({ email, password })
-    console.log('📦 reg respuesta de API:', login)
     if (login.error) return login.error.error || 'Error al iniciar sesión'
 
     localStorage.setItem('token', login.response.token)

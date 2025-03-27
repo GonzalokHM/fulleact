@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import useStore from '../store/useStore'
 import { getProductById } from '../api/products'
-import ComparisonTable from '../components/VsTable'
+import ComparisonTable from '../components/vs/VsTable'
 
 function Vs() {
   const { comparison, removeComparison, clearComparison } = useStore()

@@ -5,7 +5,6 @@ import Vs from './pages/Vs'
 import Wishlist from './pages/Wish'
 import Home from './pages/Home'
 import Details from './pages/Details'
-import Header from './components/Header'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import SearchResults from './pages/SearchResult'
@@ -14,6 +13,7 @@ import Profile from './pages/Profile'
 import VipSearch from './pages/VipSearch'
 import Footer from './components/Footer'
 import NotFound from './pages/NotFound'
+import Header from './components/Header/Header'
 
 function App() {
   const location = useLocation()
