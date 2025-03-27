@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4001/api'
+const BASE_URL = 'https://backfulleact.onrender.com/api'
 
 export const API = async ({
   endpoint,
