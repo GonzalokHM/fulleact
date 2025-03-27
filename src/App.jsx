@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectRoute'
 import VIPRoute from './components/VipRoure'
 import Vs from './pages/Vs'
@@ -16,9 +16,11 @@ import Footer from './components/Footer'
 import NotFound from './pages/NotFound'
 
 function App() {
+  const location = useLocation()
+  const showSearchInput = location.pathname !== '/vipSearch'
   return (
     <div className='flex flex-col min-h-screen'>
-      <Header />
+      <Header showSearchInput={showSearchInput} />
       <main className="flex-grow bg-[url('./background.svg')] bg-repeat bg-center bg-gray-50">
         <Routes>
           <Route path='/' element={<Home />} />

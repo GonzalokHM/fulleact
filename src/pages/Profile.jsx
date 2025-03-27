@@ -1,7 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useActionState } from 'react'
 import useStore from '../store/useStore'
 import { updateUser } from '../api/user'
 import { useNavigate } from 'react-router-dom'
+import { useFormStatus } from 'react-dom'
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button type='submit' disabled={pending} className='w-full btnInf'>
+      {pending ? 'Actualizando...' : 'Actualizar Perfil'}
+    </button>
+  )
+}
 
 function Profile() {
   const { user, setUser, logout } = useStore()
@@ -9,9 +19,6 @@ function Profile() {
   const [email, setEmail] = useState(user?.email || '')
   const [avatarFile, setAvatarFile] = useState(null)
   const [avatarPreview, setAvatarPreview] = useState(user?.avatar || null)
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -30,40 +37,33 @@ function Profile() {
     }
   }, [avatarPreview])
 
+  const [error, submitAction] = useActionState(async (_, formData) => {
+    const formUsername = formData.get('username')?.trim()
+    const formEmail = formData.get('email')?.trim()
+
+    if (!formUsername || !formEmail) {
+      return 'Nombre y correo son obligatorios'
+    }
+
+    const formPayload = new FormData()
+    formPayload.append('username', formUsername)
+    formPayload.append('email', formEmail)
+    if (avatarFile) formPayload.append('avatar', avatarFile)
+
+    const { response, error } = await updateUser(formPayload)
+    if (error) return error.message || 'Error al actualizar el perfil'
+
+    setUser(response)
+    return null
+  }, null)
+
   const handleAvatarChange = (e) => {
     const file = e.target.files[0]
     if (file) {
       setAvatarFile(file)
-      setAvatarPreview(URL.createObjectURL(file))
+      const previewUrl = URL.createObjectURL(file)
+      setAvatarPreview(previewUrl)
     }
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
-    setSuccess('')
-
-    const formData = new FormData()
-    formData.append('username', username)
-    formData.append('email', email)
-    if (avatarFile) {
-      formData.append('avatar', avatarFile)
-    }
-    try {
-      const { response, error } = await updateUser(formData)
-      if (error) {
-        setError(error.message || 'Error al actualizar el perfil')
-      } else {
-        setSuccess('Perfil actualizado exitosamente')
-        console.log(response)
-        setUser(response)
-      }
-    } catch (err) {
-      setError('Error al actualizar el perfil')
-      console.error(err)
-    }
-    setLoading(false)
   }
 
   const handleLogout = () => {
@@ -74,8 +74,8 @@ function Profile() {
   return (
     <div className='container contPading flexColCent max-w-md'>
       <div className='flex items-center mb-6'>
-        <h1>Mi Perfil</h1>
-        {user && user.avatar && (
+        <h1 className='backgBlur'>Mi Perfil</h1>
+        {user?.avatar && (
           <img
             src={user.avatar}
             alt='Avatar de usuario'
@@ -83,24 +83,25 @@ function Profile() {
           />
         )}
       </div>
-      {user && user.vip && (
+      {user?.vip && (
         <div className='mb-4'>
           <span className='viplogo '>Cuenta VIP activada</span>
         </div>
       )}
       {error && <p className='errortext'>{error}</p>}
-      {success && <p className='succestext'>{success}</p>}
-      <form onSubmit={handleSubmit} className='space-y-6'>
+      {/* {success && <p className='succestext'>{success}</p>} */}
+      <form action={submitAction} className='space-y-6'>
         <div className='flexColCent'>
           <label htmlFor='username' className='profileLabel backgBlur'>
             Nombre de usuario
           </label>
           <input
             type='text'
+            name='username'
             id='username'
+            autoComplete='username'
+            defaultValue={username}
             className='profileInput backgBlur3'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -110,10 +111,11 @@ function Profile() {
           </label>
           <input
             type='email'
+            name='email'
             id='email'
+            autoComplete='email'
+            defaultValue={email}
             className='profileInput backgBlur3'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -135,6 +137,7 @@ function Profile() {
             )}
             <input
               type='file'
+              name='avatar'
               id='avatar'
               className='absolute inset-0 opacity-0 cursor-pointer'
               accept='image/*'
@@ -145,9 +148,7 @@ function Profile() {
             Haz clic en el área para seleccionar tu avatar.
           </p>
         </div>
-        <button type='submit' disabled={loading} className='w-full btnInf'>
-          {loading ? 'Actualizando...' : 'Actualizar Perfil'}
-        </button>
+        <SubmitButton />
       </form>
       <button onClick={handleLogout} className='btnLogout'>
         Cerrar sesión

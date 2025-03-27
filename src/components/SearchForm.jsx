@@ -26,12 +26,17 @@ function SearchForm() {
 
   return (
     <form onSubmit={handleSearch} className=' flexRes'>
-      <select ref={filterRef} className='border1 mr-2 focus:outline-none'>
+      <select
+        id='filter'
+        ref={filterRef}
+        className='border1 mr-2 focus:outline-none'
+      >
         <option value='name'>Nombre</option>
         <option value='category'>Categoría</option>
       </select>
       <input
         type='text'
+        id='search'
         ref={searchRef}
         placeholder='Buscar producto...'
         className='border1 w-full md:w-auto'

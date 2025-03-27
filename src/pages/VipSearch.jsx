@@ -1,68 +1,60 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useActionState, useFormStatus, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { vipSearch } from '../api/products'
 import ProductCard from '../components/ProductCard'
+
+function SearchButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button type='submit' className='ml-2 btnVip' disabled={pending}>
+      {pending ? 'Buscando...' : 'Buscar'}
+    </button>
+  )
+}
 
 function VipSearch() {
   const { search } = useLocation()
   const queryParams = new URLSearchParams(search)
   const initialName = queryParams.get('name') || ''
 
-  const [searchTerm, setSearchTerm] = useState(initialName)
+  const inputRef = useRef()
   const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [error, searchAction] = useActionState(async (_, formData) => {
+    const term = formData.get('search')?.trim()
+    if (!term) return 'Introduce un término de búsqueda'
 
-  const handleSearch = useCallback(
-    async (e) => {
-      if (e && typeof e.preventDefault === 'function') {
-        e.preventDefault()
-      }
-      if (!searchTerm.trim()) {
-        setError('Introduce un término de búsqueda')
-        return
-      }
-      setLoading(true)
-      setError('')
-      try {
-        const { response, error } = await vipSearch(searchTerm)
-        if (error) {
-          setError(error.message || 'Error al buscar productos')
-        } else {
-          setProducts(response)
-        }
-      } catch (err) {
-        console.error(err)
-        setError('Error al buscar productos. Intenta de nuevo.')
-      }
-      setLoading(false)
-    },
-    [searchTerm]
-  )
+    const { response, error } = await vipSearch(term)
+    if (error) return error.message || 'Error al buscar productos'
+
+    setProducts(response)
+    return null
+  }, null)
 
   useEffect(() => {
     if (initialName.trim()) {
-      handleSearch()
+      const formData = new FormData()
+      formData.set('search', initialName)
+      searchAction(formData)
+      if (inputRef.current) inputRef.current.value = initialName
     }
-  }, [initialName, handleSearch])
+  }, [initialName, searchAction])
 
   return (
     <div className='contPading flexColCent'>
       <h2 className='backgBlur2 px-2'>Búsqueda VIP de Productos</h2>
-      <form onSubmit={handleSearch} className='mb-4'>
+      <form action={searchAction} className='mb-4'>
         <input
+          name='search'
+          ref={inputRef}
           type='text'
           placeholder='Busca un producto...'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
           className='px-4 py-2 border rounded w-64 backgBlur'
         />
-        <button type='submit' className='ml-2 btnVip'>
-          {loading ? 'Buscando...' : 'Buscar'}
-        </button>
+        <SearchButton />
       </form>
       {error && <p className='errortext'>{error}</p>}
-      {products.length === 0 && !loading ? (
+      {products.length === 0 && !error ? (
         <p>No se encontraron productos.</p>
       ) : (
         <div className='gridRes'>

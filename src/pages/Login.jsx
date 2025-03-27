@@ -1,46 +1,50 @@
 // src/pages/Login.jsx
-import { useRef } from 'react'
+import { useActionState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
 import useStore from '../store/useStore'
 import useWishlistSync from '../hooks/useWishListSync'
+import { loginUser } from '../api/auth'
 
 function Login() {
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { login, authLoading, authError } = useAuth()
   const localWishlist = useStore((state) => state.wishlist)
+  const setUser = useStore((state) => state.setUser)
   const { syncWishlist } = useWishlistSync()
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const [error, submitAction, pending] = useActionState(async (_, formData) => {
+    const email = formData.get('email')
+    const password = formData.get('password')
 
-    const email = emailRef.current.value
-    const password = passwordRef.current.value
+    const { response, error } = await loginUser({ email, password })
+    console.log('📦 reg respuesta de API:', error)
 
-    const res = await login({ email, password })
-    if (res) {
-      if (localWishlist.length > 0) {
-        await syncWishlist(res.user._id)
-      }
-      navigate('/')
+    if (error) return error.error || 'Error al iniciar sesión'
+
+    localStorage.setItem('token', response.token)
+    setUser(response.user)
+
+    if (localWishlist.length > 0) {
+      await syncWishlist(response.user._id)
     }
-  }
+
+    navigate('/')
+    return null
+  }, null)
 
   return (
     <div className='container flexColCent'>
       <h1 className='backgBlur2 mt-3 mb-3'>Iniciar Sesión</h1>
-      {authError && <p className='errortext'>{authError}</p>}
-      <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
+      {error && <p className='errortext'>{error}</p>}
+      <form action={submitAction} className='max-w-sm mx-auto'>
         <div className='mb-4 backgBlur'>
           <label className='block mb-1' htmlFor='email'>
             Correo electrónico
           </label>
           <input
-            ref={emailRef}
             type='email'
+            name='email'
             id='email'
+            autoComplete='email'
             className='imputBorder'
             required
           />
@@ -50,15 +54,16 @@ function Login() {
             Contraseña
           </label>
           <input
-            ref={passwordRef}
             type='password'
+            name='password'
             id='password'
+            autoComplete='current-password'
             className='imputBorder'
             required
           />
         </div>
-        <button type='submit' disabled={authLoading} className='w-full btnInf'>
-          {authLoading ? 'Iniciando...' : 'Iniciar Sesión'}
+        <button type='submit' disabled={pending} className='w-full btnInf'>
+          {pending ? 'Iniciando...' : 'Iniciar Sesión'}
         </button>
       </form>
       <p className='mt-4 text-center backgBlur p-2'>

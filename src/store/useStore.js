@@ -12,7 +12,8 @@ const useStore = create(
       },
 
       wishlist: [],
-      setWishlist: (newWishlist) => set({ wishlist: newWishlist }),
+      setWishlist: (newWishlist) =>
+        set({ wishlist: Array.isArray(newWishlist) ? newWishlist : [] }),
       toggleWishlist: (productId) =>
         set((state) => {
           const currentWishlist = Array.isArray(state.wishlist)

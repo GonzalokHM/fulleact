@@ -1,49 +1,54 @@
 import { useNavigate, Link } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
 import useStore from '../store/useStore'
 import useWishlistSync from '../hooks/useWishListSync'
-import { useRef } from 'react'
+import { loginUser, registerUser } from '../api/auth'
+import { useActionState } from 'react'
 
 function Register() {
-  const usernameRef = useRef()
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const { register, authLoading, authError } = useAuth()
   const localWishlist = useStore((state) => state.wishlist)
+  const setUser = useStore((state) => state.setUser)
   const { syncWishlist } = useWishlistSync()
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const [error, submitAction, pending] = useActionState(async (_, formData) => {
+    const username = formData.get('username')
+    const email = formData.get('email')
+    const password = formData.get('password')
 
-    const username = usernameRef.current.value
-    const email = emailRef.current.value
-    const password = passwordRef.current.value
+    const reg = await registerUser({ username, email, password })
+    if (reg.error) return reg.error.error || 'Error al registrarse'
 
-    const res = await register({ username, email, password })
-    if (res) {
-      if (localWishlist.length > 0) {
-        await syncWishlist(res.user._id)
-      }
-      navigate('/')
+    const login = await loginUser({ email, password })
+    console.log('📦 reg respuesta de API:', login)
+    if (login.error) return login.error.error || 'Error al iniciar sesión'
+
+    localStorage.setItem('token', login.response.token)
+    setUser(login.response.user)
+
+    if (localWishlist.length > 0) {
+      await syncWishlist(login.response.user._id)
     }
-  }
+
+    navigate('/')
+    return null
+  }, null)
 
   return (
     <div className='container flexColCent'>
       <h1 className='text-3xl font-bold mb-4 backgBlur3 mt-3 px-2'>
         Regístrate
       </h1>
-      {authError && <p className='errortext'>{authError}</p>}
-      <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
+      {error && <p className='errortext'>{error}</p>}
+      <form action={submitAction} className='max-w-sm mx-auto'>
         <div className='mb-4 backgBlur'>
           <label htmlFor='username' className='block mb-1'>
             Nombre de usuario
           </label>
           <input
-            ref={usernameRef}
             type='text'
+            name='username'
             id='username'
+            autoComplete='username'
             className='imputBorder'
             required
           />
@@ -53,9 +58,10 @@ function Register() {
             Correo electrónico
           </label>
           <input
-            ref={emailRef}
             type='email'
+            name='email'
             id='email'
+            autoComplete='email'
             className='imputBorder'
             required
           />
@@ -65,15 +71,16 @@ function Register() {
             Contraseña
           </label>
           <input
-            ref={passwordRef}
             type='password'
+            name='password'
             id='password'
+            autoComplete='current-password'
             className='imputBorder'
             required
           />
         </div>
-        <button type='submit' disabled={authLoading} className='btnRegister'>
-          {authLoading ? 'Registrando...' : 'Registrarse'}
+        <button type='submit' disabled={pending} className='btnRegister'>
+          {pending ? 'Registrando...' : 'Registrarse'}
         </button>
       </form>
       <p className='mt-4 text-center backgBlur px-2'>

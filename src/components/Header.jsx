@@ -1,16 +1,13 @@
-import { useLocation } from 'react-router-dom'
 import HeaderNav from './HeaderNav'
 import SearchForm from './SearchForm'
 import HeaderLogo from './HeaderLogo'
 import useStore from '../store/useStore'
 import HeaderNavMobil from './HeaderNavMobil'
+import { memo } from 'react'
 
-function Header() {
+function Header({ showSearchInput }) {
   const menuOpen = useStore((state) => state.menuOpen)
   const toggleMenu = useStore((state) => state.toggleMenu)
-
-  const location = useLocation()
-  const showSearchInput = location.pathname !== '/vipSearch'
 
   return (
     <header className='bg-white shadow mb-4'>
@@ -60,4 +57,4 @@ function Header() {
   )
 }
 
-export default Header
+export default memo(Header)
