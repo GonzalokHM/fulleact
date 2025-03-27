@@ -21,7 +21,7 @@ function App() {
   return (
     <div className='flex flex-col min-h-screen'>
       <Header showSearchInput={showSearchInput} />
-      <main className="flex-grow bg-[url('./background.svg')] bg-repeat bg-center bg-gray-50">
+      <main className="flex-grow bg-[url('/background.svg')] bg-repeat bg-center bg-gray-50">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/product/:id' element={<Details />} />
