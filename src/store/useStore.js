@@ -43,7 +43,11 @@ const useStore = create(
         set((state) => ({
           comparison: state.comparison.filter((id) => id !== productId)
         })),
-      clearComparison: () => set({ comparison: [] })
+      clearComparison: () => set({ comparison: [] }),
+
+      menuOpen: false,
+      setMenuOpen: (value) => set({ menuOpen: value }),
+      toggleMenu: () => set((state) => ({ menuOpen: !state.menuOpen }))
     }),
     {
       name: 'app-store',

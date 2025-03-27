@@ -1,8 +1,8 @@
-import useStore from '../store/useStore'
+import useComparisonProduct from '../hooks/useComparisonProduct'
 
 function CompareButton({ productId }) {
-  const { comparison, addComparison, removeComparison } = useStore()
-  const isInComparison = comparison.includes(productId)
+  const { isInComparison, addComparison, removeComparison } =
+    useComparisonProduct(productId)
 
   const handleClick = () => {
     if (isInComparison) {
@@ -13,10 +13,7 @@ function CompareButton({ productId }) {
   }
 
   return (
-    <button
-      onClick={handleClick}
-      className='bg-purple-500 hover:bg-purple-600 text-white py-1 px-1 rounded w-10'
-    >
+    <button onClick={handleClick} className='btnCompare'>
       {isInComparison ? '-' : '+'}
     </button>
   )

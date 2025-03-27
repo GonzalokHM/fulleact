@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { memo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function SearchForm() {
   const navigate = useNavigate()
-  const [searchTerm, setSearchTerm] = useState('')
-  const [filterType, setFilterType] = useState('name')
+  const searchRef = useRef()
+  const filterRef = useRef()
 
   const handleSearch = async (e) => {
     e.preventDefault()
+    const searchTerm = searchRef.current.value.trim()
+    const filterType = filterRef.current.value
+
     if (!searchTerm.trim()) return
 
     filterType === 'category'
@@ -23,19 +26,14 @@ function SearchForm() {
 
   return (
     <form onSubmit={handleSearch} className=' flexRes'>
-      <select
-        value={filterType}
-        onChange={(e) => setFilterType(e.target.value)}
-        className='border1 mr-2 focus:outline-none'
-      >
+      <select ref={filterRef} className='border1 mr-2 focus:outline-none'>
         <option value='name'>Nombre</option>
         <option value='category'>Categoría</option>
       </select>
       <input
         type='text'
+        ref={searchRef}
         placeholder='Buscar producto...'
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
         className='border1 w-full md:w-auto'
       />
       <button type='submit' className='btnInf'>
@@ -45,4 +43,4 @@ function SearchForm() {
   )
 }
 
-export default SearchForm
+export default memo(SearchForm)

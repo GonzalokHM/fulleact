@@ -1,35 +1,31 @@
-import { addToWishlist, removeFromWishlist } from '../api/wishList'
 import useStore from '../store/useStore'
+import { addToWishlist, removeFromWishlist } from '../api/wishList'
+import useWishlistProduct from '../hooks/useWishlistProducts'
 
 function WishlistToggle({ productId, className = '' }) {
-  const { wishlist, setWishlist, user } = useStore()
-  const safeWishlist = Array.isArray(wishlist) ? wishlist : []
-  const isInWishlist = safeWishlist.includes(productId)
+  const { isInWishlist, setWishlist, user } = useWishlistProduct(productId)
 
   const handleClick = async () => {
+    const current = useStore.getState().wishlist || []
+
+    const updatedWishlist = isInWishlist
+      ? current.filter((id) => id !== productId)
+      : [...current, productId]
+
     if (!user) {
-      if (isInWishlist) {
-        setWishlist(safeWishlist.filter((id) => id !== productId))
-      } else {
-        setWishlist([...safeWishlist, productId])
-      }
+      setWishlist(updatedWishlist)
       return
     }
 
-    if (isInWishlist) {
-      const { response, error } = await removeFromWishlist(productId)
-      if (response) {
-        setWishlist(safeWishlist.filter((id) => id !== productId))
-      } else {
-        console.error(error)
-      }
+    const apiCall = isInWishlist
+      ? removeFromWishlist(productId)
+      : addToWishlist(user._id, productId)
+
+    const { response, error } = await apiCall
+    if (response) {
+      setWishlist(updatedWishlist)
     } else {
-      const { response, error } = await addToWishlist(user._id, productId)
-      if (response) {
-        setWishlist([...safeWishlist, productId])
-      } else {
-        console.error(error)
-      }
+      console.error(error)
     }
   }
 

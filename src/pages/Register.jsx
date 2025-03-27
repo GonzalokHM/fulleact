@@ -1,20 +1,25 @@
-import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import useStore from '../store/useStore'
 import useWishlistSync from '../hooks/useWishListSync'
+import { useRef } from 'react'
 
 function Register() {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const usernameRef = useRef()
+  const emailRef = useRef()
+  const passwordRef = useRef()
   const { register, authLoading, authError } = useAuth()
-  const { wishlist: localWishlist } = useStore()
+  const localWishlist = useStore((state) => state.wishlist)
   const { syncWishlist } = useWishlistSync()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const username = usernameRef.current.value
+    const email = emailRef.current.value
+    const password = passwordRef.current.value
+
     const res = await register({ username, email, password })
     if (res) {
       if (localWishlist.length > 0) {
@@ -36,11 +41,10 @@ function Register() {
             Nombre de usuario
           </label>
           <input
+            ref={usernameRef}
             type='text'
             id='username'
             className='imputBorder'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -49,11 +53,10 @@ function Register() {
             Correo electrónico
           </label>
           <input
+            ref={emailRef}
             type='email'
             id='email'
             className='imputBorder'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -62,11 +65,10 @@ function Register() {
             Contraseña
           </label>
           <input
+            ref={passwordRef}
             type='password'
             id='password'
             className='imputBorder'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>

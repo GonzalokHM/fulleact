@@ -1,20 +1,24 @@
 // src/pages/Login.jsx
-import { useState } from 'react'
+import { useRef } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import useStore from '../store/useStore'
 import useWishlistSync from '../hooks/useWishListSync'
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const emailRef = useRef()
+  const passwordRef = useRef()
   const { login, authLoading, authError } = useAuth()
-  const { wishlist: localWishlist } = useStore()
+  const localWishlist = useStore((state) => state.wishlist)
   const { syncWishlist } = useWishlistSync()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const email = emailRef.current.value
+    const password = passwordRef.current.value
+
     const res = await login({ email, password })
     if (res) {
       if (localWishlist.length > 0) {
@@ -34,11 +38,10 @@ function Login() {
             Correo electrónico
           </label>
           <input
+            ref={emailRef}
             type='email'
             id='email'
             className='imputBorder'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -47,11 +50,10 @@ function Login() {
             Contraseña
           </label>
           <input
+            ref={passwordRef}
             type='password'
             id='password'
             className='imputBorder'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>

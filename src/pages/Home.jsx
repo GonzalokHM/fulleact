@@ -7,7 +7,7 @@ import Carousel from '../components/Carousel'
 import useStore from '../store/useStore'
 
 function Home() {
-  const { user } = useStore()
+  const user = useStore((state) => state.user)
   const [uniqueProducts, setUniqueProducts] = useState([])
   const [topSellingProducts, setTopSellingProducts] = useState([])
   const [loadingUnique, setLoadingUnique] = useState(false)

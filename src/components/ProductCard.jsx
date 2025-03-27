@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import BuyAndWishlist from './BuyAndWishlist'
 import CompareButton from './CompareButton'
+import { memo } from 'react'
 
 function ProductCard({
   product,
@@ -48,4 +49,4 @@ function ProductCard({
   )
 }
 
-export default ProductCard
+export default memo(ProductCard)

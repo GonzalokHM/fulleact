@@ -1,27 +1,27 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import HeaderNav from './HeaderNav'
 import SearchForm from './SearchForm'
+import HeaderLogo from './HeaderLogo'
+import useStore from '../store/useStore'
+import HeaderNavMobil from './HeaderNavMobil'
 
 function Header() {
-  const location = useLocation()
-  const [menuOpen, setMenuOpen] = useState(false)
+  const menuOpen = useStore((state) => state.menuOpen)
+  const toggleMenu = useStore((state) => state.toggleMenu)
 
+  const location = useLocation()
   const showSearchInput = location.pathname !== '/vipSearch'
 
   return (
     <header className='bg-white shadow mb-4'>
       <div className='container py-2 flex items-center justify-between'>
-        <Link to='/' className='flex items-center '>
-          <img src='/logo.png' alt='Logo' className='w-10 h-10 mr-1' />
-          <span className='font-bold text-xl'>Comprador</span>
-        </Link>
+        <HeaderLogo />
         <div className='flex items-center'>
           <div className='hidden md:block'>
             <HeaderNav />
           </div>
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={toggleMenu}
             className='md:hidden focus:outline-none '
             aria-label='Toggle menu'
           >
@@ -52,10 +52,10 @@ function Header() {
         </div>
         {showSearchInput && <SearchForm />}
       </div>
-
-      {menuOpen && (
-        <HeaderNav isMobile={true} onLinkClick={() => setMenuOpen(false)} />
-      )}
+      <HeaderNavMobil
+        open={menuOpen}
+        onClose={() => useStore.getState().setMenuOpen(false)}
+      />
     </header>
   )
 }

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 import ProductCard from './ProductCard'
 
 function Carousel({ title, products }) {
@@ -12,7 +12,7 @@ function Carousel({ title, products }) {
   return (
     <div className='my-8'>
       {' '}
-      <h2 className='text-2xl font-bold mb-4'>{title}</h2>{' '}
+      <h2 className='backgBlur2'>{title}</h2>{' '}
       <div className='relative'>
         {' '}
         <button
@@ -51,4 +51,4 @@ function Carousel({ title, products }) {
   )
 }
 
-export default Carousel
+export default memo(Carousel)
