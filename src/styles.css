@@ -1,13 +1,8 @@
 @import 'tailwindcss';
 
-/* @custom-variant dark (&:where(.dark, .dark *)); */
-
 @layer base {
-  h1,
-  h2,
-  h3,
-  p {
-    font-family: 'Urbanist', sans-serif;
+  body {
+    font-family: 'Urbanist', system-ui, sans-serif;
   }
   h1 {
     @apply text-4xl font-bold;
@@ -105,12 +100,6 @@
 }
 
 /* Home */
-.welcomeImg {
-  @apply relative w-full h-[300px] flex items-center justify-center bg-cover bg-center
-bg-[url('https://picsum.photos/400/300/?blur')]
-sm:bg-[url('https://picsum.photos/800/300/?blur')]
-lg:bg-[url('https://picsum.photos/1200/300/?blur')];
-}
 .viplogo {
   @apply bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold;
 }
@@ -143,7 +132,7 @@ lg:bg-[url('https://picsum.photos/1200/300/?blur')];
 
 /* footer  */
 footer {
-  @apply w-full text-purple-500 py-2;
+  @apply w-full min-h-[42px] text-purple-500 py-2;
 }
 
 /* Blur  */

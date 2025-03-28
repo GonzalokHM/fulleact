@@ -4,6 +4,7 @@ import { getProductById } from '../api/products'
 import useStore from '../store/useStore'
 import BuyAndWishlist from '../components/BuyAndWishlist'
 import Stars from '../components/stars/Stars'
+import Loader from '../components/Loader'
 
 function Details() {
   const { id: product_id } = useParams() // asin
@@ -26,13 +27,7 @@ function Details() {
     fetchProduct()
   }, [product_id])
 
-  if (loading)
-    return (
-      <Loader
-        size='w-12 h-12'
-        label={`examinando ${product.titulo || 'producto'}...`}
-      />
-    )
+  if (loading) return <Loader size='w-12 h-12' label='Examinando producto...' />
   if (error) return <p className='errortext'>{error}</p>
   if (!product) return <p>Producto no encontrado.</p>
 

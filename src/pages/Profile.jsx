@@ -79,6 +79,8 @@ function Profile() {
           <img
             src={user.avatar}
             alt='Avatar de usuario'
+            width={124}
+            height={124}
             className='w-16 h-16 rounded-full object-cover m-0.5'
           />
         )}

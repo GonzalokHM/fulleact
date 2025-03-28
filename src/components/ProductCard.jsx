@@ -32,6 +32,8 @@ function ProductCard({
       <img
         src={product.img}
         alt={product.titulo}
+        width={400}
+        height={192}
         className='w-full h-48 object-cover mb-4'
       />
       <h3 className='line-clamp-3'>{product.titulo}</h3>
