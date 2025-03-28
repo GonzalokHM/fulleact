@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import useStore from '../store/useStore'
 import { getProductById } from '../api/products'
 import ComparisonTable from '../components/vs/VsTable'
+import Loader from '../components/Loader'
 
 function Vs() {
   const { comparison, removeComparison, clearComparison } = useStore()
@@ -40,7 +41,7 @@ function Vs() {
           No has seleccionado productos para comparar.
         </p>
       )}
-      {loading && <p>Cargando productos...</p>}
+      {loading && <Loader size='w-15 h-15' label='comparando productos...' />}
       {error && <p className='errortext'>{error}</p>}
       {products.length > 0 && (
         <ComparisonTable

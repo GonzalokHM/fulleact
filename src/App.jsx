@@ -19,9 +19,9 @@ function App() {
   const location = useLocation()
   const showSearchInput = location.pathname !== '/vipSearch'
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className="flex flex-col min-h-screen bg-[url('/background.svg')] bg-repeat bg-center bg-gray-50">
       <Header showSearchInput={showSearchInput} />
-      <main className="flex-grow bg-[url('/background.svg')] bg-repeat bg-center bg-gray-50">
+      <main className='flex-grow '>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/product/:id' element={<Details />} />

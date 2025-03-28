@@ -2,7 +2,7 @@ import WishlistToggle from './WishListTogle'
 
 function BuyAndWishlist({ product, showWishlistToggle = true }) {
   return (
-    <div className='flex items-center space-x-2'>
+    <section className='flex items-center space-x-2'>
       <a
         href={`https://www.amazon.es/dp/${product.asin}`}
         target='_blank'
@@ -12,7 +12,7 @@ function BuyAndWishlist({ product, showWishlistToggle = true }) {
         Comprar
       </a>
       {showWishlistToggle && <WishlistToggle productId={product._id} />}
-    </div>
+    </section>
   )
 }
 

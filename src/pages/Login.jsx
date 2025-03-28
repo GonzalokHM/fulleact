@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import { useActionState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import useStore from '../store/useStore'
@@ -30,7 +29,7 @@ function Login() {
   }, null)
 
   return (
-    <div className='container flexColCent'>
+    <section className='container flexColCent'>
       <h1 className='backgBlur2 mt-3 mb-3'>Iniciar Sesión</h1>
       {error && <p className='errortext'>{error}</p>}
       <form action={submitAction} className='max-w-sm mx-auto'>
@@ -70,7 +69,7 @@ function Login() {
           Regístrate
         </Link>
       </p>
-    </div>
+    </section>
   )
 }
 

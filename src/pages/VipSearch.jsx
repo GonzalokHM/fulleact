@@ -1,8 +1,10 @@
-import { useActionState, useFormStatus, useRef } from 'react'
+import { startTransition, useActionState, useRef } from 'react'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { vipSearch } from '../api/products'
 import ProductCard from '../components/ProductCard'
+import { useFormStatus } from 'react-dom'
+import Loader from '../components/Loader'
 
 function SearchButton() {
   const { pending } = useFormStatus()
@@ -35,7 +37,9 @@ function VipSearch() {
     if (initialName.trim()) {
       const formData = new FormData()
       formData.set('search', initialName)
-      searchAction(formData)
+      startTransition(() => {
+        searchAction(formData)
+      })
       if (inputRef.current) inputRef.current.value = initialName
     }
   }, [initialName, searchAction])
@@ -55,7 +59,7 @@ function VipSearch() {
       </form>
       {error && <p className='errortext'>{error}</p>}
       {products.length === 0 && !error ? (
-        <p>No se encontraron productos.</p>
+        <Loader size='w-12 h-12' label='Buscando resultados...' />
       ) : (
         <div className='gridRes'>
           {products.map((product) => (

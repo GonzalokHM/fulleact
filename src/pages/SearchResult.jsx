@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { startTransition, useActionState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { filterProducts } from '../api/products'
 import ProductCard from '../components/ProductCard'
@@ -10,50 +10,55 @@ function SearchResults() {
   const name = queryParams.get('name') || ''
   const type = queryParams.get('type') || 'name'
 
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [state, fetchResults, pending] = useActionState(
+    async () => {
+      if (!name.trim()) return { products: [], error: '' }
 
-  useEffect(() => {
-    const fetchResults = async () => {
-      if (!name.trim()) return
-      setLoading(true)
-      setError('')
       let params = {}
       if (type === 'category') {
         params = { categoriaName: name }
       } else {
         params = { name }
       }
+
       const { response, error } = await filterProducts(params)
-      if (error) {
-        setError(error.message || 'Error al buscar productos')
-      } else {
-        setProducts(response)
+      return {
+        products: error ? [] : response,
+        error: error?.message || ''
       }
-      setLoading(false)
-    }
-    fetchResults()
-  }, [name, type])
+    },
+    { products: [], error: '' }
+  )
+
+  useEffect(() => {
+    startTransition(() => {
+      fetchResults()
+    })
+  }, [name, type, fetchResults])
 
   const handleVipSearch = () => {
     navigate(
       `/vipSearch?name=${encodeURIComponent(name)}&type=${encodeURIComponent(
         type
-      )}`
+      )}`,
+      {
+        state: { from: '/search-results', searchTerm: name, searchType: type }
+      }
     )
   }
+  const { products, error } = state
 
   return (
     <div className='contPading'>
       <h2 className='backgBlur2 w-fit px-1'>Resultados de búsqueda</h2>
-      {loading && <p>Cargando resultados...</p>}
+      {pending && (
+        <Loader size='w-12 h-12' label={`Buscando ${name || 'producto'}...`} />
+      )}
       {error && <p className='errortext'>{error}</p>}
-      {!loading && products.length === 0 && (
+      {!pending && products.length === 0 && (
         <section className='flexColCent contPading' aria-live='polite'>
-          <h3 className='backgBlur5'>No se encontraron productos.</h3>
-          <p className='mb-1 backgBlur'>revisa la ortografia</p>
-          <p className='mb-1 backgBlur'>Intenta con otro término.</p>
+          <h3 className='mb-2 backgBlur5'>No se encontraron productos.</h3>
+          <p className='mb-3 backgBlur'>Intenta con otro término.</p>
           <p className='mb-4 backgBlur'>
             O prueba la búsqueda VIP para obtener resultados adicionales.
           </p>
@@ -66,7 +71,7 @@ function SearchResults() {
           </button>
         </section>
       )}
-      <section className='gridRes'>
+      <section className='gridRes' aria-live='polite'>
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}

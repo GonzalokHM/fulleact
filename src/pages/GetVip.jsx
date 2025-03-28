@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import useStore from '../store/useStore'
 import { updateUserRol } from '../api/user'
 
@@ -8,6 +8,10 @@ function GetVip() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from
+  const searchTerm = location.state?.searchTerm
+  const searchType = location.state?.searchType
 
   const handleActivateVip = async () => {
     setLoading(true)
@@ -21,7 +25,16 @@ function GetVip() {
         )
       } else {
         setUser(response)
-        navigate('/profile')
+        if (from === '/search-results' && searchTerm) {
+          navigate(
+            `/vipSearch?name=${encodeURIComponent(
+              searchTerm
+            )}&type=${encodeURIComponent(searchType)}`
+          )
+        } else {
+          setUser(response)
+          navigate('/profile')
+        }
       }
     } catch (err) {
       console.error(err)
@@ -33,7 +46,7 @@ function GetVip() {
   return (
     <div className='contPading flexColCent'>
       <h1 className='mb-4 backgBlur2 '>Prueba VIP Gratis</h1>
-      <p className='mb-4 text-center backgBlur'>
+      <p className='mb-6 text-xl text-center backgBlur'>
         ¡Disfruta de funciones exclusivas con la suscripción VIP por tiempo
         limitado! Al activarla, tendrás acceso a rutas exclusivas y beneficios
         especiales.

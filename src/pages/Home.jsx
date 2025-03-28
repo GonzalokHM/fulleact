@@ -5,6 +5,7 @@ import {
 } from '../api/products'
 import Carousel from '../components/Carousel'
 import useStore from '../store/useStore'
+import Loader from '../components/Loader'
 
 function Home() {
   const user = useStore((state) => state.user)
@@ -71,13 +72,13 @@ function Home() {
 
       <section className='container mx-auto px-4'>
         {loadingUnique ? (
-          <p>Cargando productos...</p>
+          <Loader size='w-12 h-12' label='Analizando lo que buscas...' />
         ) : (
           <Carousel title='Encuentra lo que buscas' products={uniqueProducts} />
         )}
 
         {loadingTop ? (
-          <p>Cargando top ventas...</p>
+          <Loader size='w-12 h-12' label='recopilando top ventas...' />
         ) : (
           <Carousel title='Top ventas' products={topSellingProducts} />
         )}

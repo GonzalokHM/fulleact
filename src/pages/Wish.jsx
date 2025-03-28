@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import useStore from '../store/useStore'
 import ProductCard from '../components/ProductCard'
 import { getWishlist, removeFromWishlist } from '../api/wishList'
+import Loader from '../components/Loader'
 
 function Wishlist() {
   const { user, setWishlist } = useStore()
@@ -43,10 +44,12 @@ function Wishlist() {
   return (
     <div className='contPading'>
       <h2 className='backgBlur2 px-1.5 w-fit'>Mi Wishlist</h2>
-      {loading && <p>Cargando wishlist...</p>}
-      {error && <p className='errortext'>{error}</p>}
+      {loading && <Loader size='w-12 h-12' label='Colocando wishList...' />}
+      {error && <p className='errortext backgBlur w-fit'>{error}</p>}
       {!loading && wishlistItems.length === 0 ? (
-        <p>No tienes productos en la wishlist.</p>
+        <p className='backgBlur w-fit font-bold'>
+          No tienes productos en la wishlist.
+        </p>
       ) : (
         <div className='gridRes'>
           {wishlistItems.map((item) => (

@@ -10,7 +10,11 @@ function Carousel({ title, products }) {
     carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' })
   }
   return (
-    <div className='my-8'>
+    <section
+      className='my-8'
+      role='region'
+      aria-label={`Carrusel de productos: ${title}`}
+    >
       {' '}
       <h2 className='backgBlur2'>{title}</h2>{' '}
       <div className='relative'>
@@ -29,13 +33,13 @@ function Carousel({ title, products }) {
         >
           {' '}
           {products.map((product) => (
-            <div
+            <article
               key={product._id}
               className='min-w-[250px] flex justify-between snap-start '
             >
               {' '}
               <ProductCard product={product} />{' '}
-            </div>
+            </article>
           ))}{' '}
         </div>{' '}
         <button
@@ -47,7 +51,7 @@ function Carousel({ title, products }) {
           ▶{' '}
         </button>{' '}
       </div>{' '}
-    </div>
+    </section>
   )
 }
 

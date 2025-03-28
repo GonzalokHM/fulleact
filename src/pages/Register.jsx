@@ -33,7 +33,7 @@ function Register() {
   }, null)
 
   return (
-    <div className='container flexColCent'>
+    <section className='container flexColCent'>
       <h1 className='text-3xl font-bold mb-4 backgBlur3 mt-3 px-2'>
         Regístrate
       </h1>
@@ -88,7 +88,7 @@ function Register() {
           Inicia Sesión
         </Link>
       </p>
-    </div>
+    </section>
   )
 }
 
