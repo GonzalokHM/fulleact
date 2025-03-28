@@ -1,9 +1,10 @@
 # 🛍️ FullStack Product Comparator
 
-🔗 **Accede aquí:** [comprador](https://fulleact.vercel.app/)
+🔗 **Accede aquí:** [Web Comprador](https://fulleact.vercel.app/)
+--
 Un comparador de productos moderno y rápido que permite a los usuarios buscar, guardar, comparar y descubrir productos.
-
 ---
+🔗 **Accede aquí:** [back-end](https://backfulleact.onrender.com)
 
 ## 🚀 Tech Stack
 
