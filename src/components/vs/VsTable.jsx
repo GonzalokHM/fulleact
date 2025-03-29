@@ -31,7 +31,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='vstd backgBlur2'>Precio</td>
             {products.map((product) => (
-              <td key={product._id} className='vstdI backgBlur'>
+              <td key={product._id} className='vstdI backgBlur1'>
                 ${product.precio}
               </td>
             ))}
@@ -39,7 +39,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='vstd backgBlur2'>Marca</td>
             {products.map((product) => (
-              <td key={product._id} className='vstdI backgBlur'>
+              <td key={product._id} className='vstdI backgBlur1'>
                 {product.marca}
               </td>
             ))}
@@ -47,7 +47,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='vstd backgBlur2'>Puntuación</td>
             {products.map((product) => (
-              <td key={product._id} className='vstdI backgBlur'>
+              <td key={product._id} className='vstdI backgBlur1'>
                 {product.puntuacion}⭐
               </td>
             ))}
@@ -55,7 +55,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <td className='vstd backgBlur2'>Categoría</td>
             {products.map((product) => (
-              <td key={product._id} className='vstdI backgBlur'>
+              <td key={product._id} className='vstdI backgBlur1'>
                 {product.categoria ? product.categoria.nombre : 'N/A'}
               </td>
             ))}

@@ -12,8 +12,8 @@ function Login() {
   const navigate = useNavigate()
   const { search } = useLocation()
   const params = new URLSearchParams(search)
-  const sessionExpired = params.get('sessionExpired')
-  const showSessionExpired = useAutoDismiss(!!sessionExpired, 5000)
+  const sessionExpiredParam = params.get('sessionExpired')
+  const showSessionExpired = useAutoDismiss(sessionExpiredParam ? 1 : 0, 5000)
 
   const [error, submitAction, pending] = useActionState(async (_, formData) => {
     const email = formData.get('email')
@@ -36,7 +36,7 @@ function Login() {
   return (
     <>
       {showSessionExpired && (
-        <div className='bg-red-100 text-red-700 p-4 rounded mb-4 text-center'>
+        <div className='backgBlurDimisDelet p-4 rounded mb-4 text-center'>
           Tu sesión ha caducado, por favor vuelve a loguearte.
         </div>
       )}

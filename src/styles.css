@@ -32,7 +32,6 @@
   }
 }
 @layer components {
-  /* utils  */
   /* Buttons */
   .btnRemoveWish {
     @apply absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded;
@@ -114,12 +113,28 @@
   .categoryLink {
     @apply text-blue-700 cursor-pointer hover:underline transition duration-200;
   }
+  /* Header  */
+  .container {
+    @apply mx-auto px-4;
+  }
+  .hoverH {
+    @apply hover:text-blue-500;
+  }
+  /* footer  */
+  footer {
+    @apply w-full min-h-[42px] text-purple-500 py-2;
+  }
+
   /* pages */
+
   /* Vs  */
+  .compareDimis {
+    @apply absolute top-full left-0 mt-1 text-white text-xs p-1 rounded shadow;
+  }
+  /* tavle */
   .vsth {
     @apply p-4 border bg-blue-50 text-sm text-gray-700 font-semibold;
   }
-
   .vstd {
     @apply p-4 border font-bold bg-amber-50 text-sm text-left;
   }
@@ -130,14 +145,6 @@
   /* Home */
   .viplogo {
     @apply bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold;
-  }
-
-  /* Header  */
-  .container {
-    @apply mx-auto px-4;
-  }
-  .hoverH {
-    @apply hover:text-blue-500;
   }
 
   /* Profile */
@@ -158,14 +165,12 @@
     @apply h-6 w-6;
   }
 
-  /* footer  */
-  footer {
-    @apply w-full min-h-[42px] text-purple-500 py-2;
-  }
-
   @layer utilities {
     .backgBlur {
       @apply bg-white/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+    .backgBlur1 {
+      @apply bg-white/70 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
     }
     .backgBlur2 {
       @apply bg-yellow-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
@@ -174,10 +179,16 @@
       @apply bg-sky-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
     }
     .backgBlur4 {
-      @apply bg-sky-300/70 backdrop-blur-xs rounded-xs shadow-sm border border-white/20;
+      @apply bg-sky-300/70 backdrop-blur-xs rounded-md shadow-sm border border-white/20;
     }
     .backgBlur5 {
       @apply bg-red-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+    .backgBlurDimisplus {
+      @apply bg-green-500/70 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+    .backgBlurDimisDelet {
+      @apply bg-red-500/70 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
     }
   }
 }
