@@ -24,7 +24,7 @@ function ProductCard({
       </>
     )
   } else {
-    priceContent = <p className='priceText'>Precio: ${product.precio}</p>
+    priceContent = <p className='priceText'>${product.precio}</p>
   }
   return (
     <div className='flex flex-col justify-between backgBlur'>
@@ -36,7 +36,9 @@ function ProductCard({
         height={192}
         className='w-full h-48 object-cover mb-4'
       />
-      <h3 className='line-clamp-3'>{product.titulo}</h3>
+      <h3 className='line-clamp-3 backgBlur2 rounded-lg text-center'>
+        {product.titulo}
+      </h3>
       {priceContent}
       <div className='flex justify-between'>
         <BuyAndWishlist

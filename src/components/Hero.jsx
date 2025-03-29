@@ -3,9 +3,9 @@ function Hero({ user }) {
     <section className='relative w-full h-[300px] flex items-center justify-center overflow-hidden'>
       <picture>
         <source media='(min-width: 1024px)' srcSet='/hero-lg.webp' />
-        <source media='(min-width: 640px)' srcSet='/hero-md.webp' />
+        <source media='(min-width: 640px)' srcSet='/hero-sm.webp' />
         <img
-          src='/hero-sm.webp'
+          src='/hero.webp'
           alt='Imagen de bienvenida'
           height={300}
           className='absolute inset-0 w-full h-[300px] object-cover'

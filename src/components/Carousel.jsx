@@ -21,7 +21,7 @@ function Carousel({ title, products }) {
         {' '}
         <button
           onClick={scrollLeft}
-          className='absolute left-0 top-1/3 transform -translate-y-1/3 z-10 bg-gray-100-opacity-70 backdrop-blur-sm p-2.5 rounded-full shadow hover:bg-gray-200'
+          className='btnArrowCarrousel left-0 '
           aria-label='Desplazar a la izquierda'
         >
           {' '}
@@ -29,7 +29,7 @@ function Carousel({ title, products }) {
         </button>{' '}
         <div
           ref={carouselRef}
-          className='flex overflow-x-auto space-x-4 scroll-smooth snap-x snap-mandatory'
+          className='flex overflow-x-auto space-x-4 scroll-smooth snap-x snap-mandatory scrollbar-custom'
         >
           {' '}
           {products.map((product) => (
@@ -44,7 +44,7 @@ function Carousel({ title, products }) {
         </div>{' '}
         <button
           onClick={scrollRight}
-          className='absolute right-0 top-1/3 transform -translate-y-1/3 z-10 bg-gray-100-opacity-70 backdrop-blur-sm p-2.5 rounded-full shadow hover:bg-gray-200'
+          className='btnArrowCarrousel right-0 '
           aria-label='Desplazar a la derecha'
         >
           {' '}

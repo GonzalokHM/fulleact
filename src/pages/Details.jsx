@@ -38,32 +38,36 @@ function Details() {
 
   return (
     <div className='contPading'>
-      <h1 className='mb-4 backgBlur2'>{product.titulo}</h1>
+      <h1 className='mb-4 backgBlur2 text-center'>{product.titulo}</h1>
       <article className='flex flex-col md:flex-row backgBlur'>
         <img
           src={product.img}
           alt={product.titulo}
           className='w-full md:w-1/2 object-cover mb-4 md:mb-0 md:mr-4 backgBlur'
         />
-        <section>
-          {isVip ? (
-            <>
-              <p className='priceText'>
-                Precio original:{' '}
-                <span className='line-through'>${normalPrice.toFixed(2)}</span>
-              </p>
-              <p className='priceText vipPrice'>Precio VIP: ${vipPrice}</p>
-            </>
-          ) : (
-            <p className='priceText'>Precio: ${normalPrice}</p>
-          )}
-          <section className='mt-4 py-2'>
-            <BuyAndWishlist product={product} />
+        <section className='flex flex-col justify-between'>
+          <section>
+            {isVip ? (
+              <>
+                <p>
+                  Precio original:{' '}
+                  <span className='line-through'>
+                    ${normalPrice.toFixed(2)}
+                  </span>
+                </p>
+                <p className='priceText vipPrice'>Precio VIP: ${vipPrice}</p>
+              </>
+            ) : (
+              <p className='priceText'>Precio: ${normalPrice}</p>
+            )}
+            <section className='mt-4 py-2'>
+              <BuyAndWishlist product={product} />
+            </section>
+            <Stars rating={product.puntuacion} />
+            <p className='description backgBlur2'>{product.descripcion}</p>
+            <p className='mb-2'>{product.marca}</p>
           </section>
-          <Stars rating={product.puntuacion} />
-          <p>{product.descripcion}</p>
-          <p className='mb-2'>Marca: {product.marca}</p>
-          <section className='flex items-center mb-2'>
+          <section className='flex items-center mb-2 '>
             {product.categoria && (
               <Link
                 to={`/search-results?name=${encodeURIComponent(
@@ -74,9 +78,11 @@ function Details() {
                 <img
                   src={product.categoria.icono}
                   alt={product.categoria.nombre}
-                  className='w-8 h-8 mr-2'
+                  className='w-8 h-8 mr-2 rounded-b-sm'
                 />
-                <span>{product.categoria.nombre}</span>
+                <span className='categoryLink backgBlur rounded-t-sm'>
+                  {product.categoria.nombre}
+                </span>
               </Link>
             )}
           </section>

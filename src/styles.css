@@ -13,141 +13,171 @@
   h3 {
     @apply text-xl font-bold mb-2;
   }
-}
 
-/* utils  */
-/* Buttons */
-.btnRemoveWish {
-  @apply absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded;
+  /* scrollbar */
+  .scrollbar-custom::-webkit-scrollbar {
+    height: 10px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: rgba(229, 231, 235, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: var(--color-purple-500);
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: var(--color-yellow-500);
+  }
 }
-.btnCompare {
-  @apply bg-purple-500 hover:bg-purple-600 text-white py-1 px-1 rounded w-10;
-}
-.btnRemoveComp {
-  @apply mt-2 text-red-500 hover:text-red-700 text-xs;
-}
-.btnDeleteVs {
-  @apply mt-6 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow transition;
-}
+@layer components {
+  /* utils  */
+  /* Buttons */
+  .btnRemoveWish {
+    @apply absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded;
+  }
+  .btnCompare {
+    @apply bg-purple-500 hover:bg-purple-600 text-white py-1 px-1 rounded w-10;
+  }
+  .btnRemoveComp {
+    @apply mt-2 text-red-500 hover:text-red-700 text-xs;
+  }
+  .btnDeleteVs {
+    @apply mt-6 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow transition;
+  }
 
-.btnRegister {
-  @apply w-full bg-green-500 text-white py-2 rounded hover:bg-green-600;
-}
+  .btnRegister {
+    @apply w-full bg-green-500 text-white py-2 rounded hover:bg-green-600;
+  }
 
-.btnInf {
-  @apply px-4 py-2 rounded text-white bg-blue-500 hover:bg-blue-600;
-}
+  .btnInf {
+    @apply px-4 py-2 rounded text-white bg-blue-500 hover:bg-blue-600;
+  }
 
-.btnLogout {
-  @apply bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-2;
-}
+  .btnLogout {
+    @apply bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-2;
+  }
 
-.btnVip {
-  @apply px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600;
-}
+  .btnVip {
+    @apply px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600;
+  }
+  .btnArrowCarrousel {
+    @apply absolute top-1/3 transform -translate-y-1/3 z-10 bg-gray-100/30 backdrop-blur-xs p-2.5 rounded-full shadow  text-purple-500 hover:bg-purple-200;
+  }
 
-/* borders  */
+  /* borders  */
 
-.border1 {
-  @apply border rounded px-2 py-1 text-sm;
-}
-.border2 {
-  @apply border rounded-xl shadow p-4;
-}
-.imputBorder {
-  @apply w-full border rounded px-2 py-1;
-}
+  .border1 {
+    @apply border rounded px-2 py-1 text-sm;
+  }
+  .border2 {
+    @apply border rounded-xl shadow p-4;
+  }
+  .imputBorder {
+    @apply w-full border rounded px-2 py-1;
+  }
 
-.contPading {
-  @apply p-4;
-}
-/* layout  */
-.flexColCent {
-  @apply flex flex-col justify-center text-center items-center;
-}
-.flexRes {
-  @apply flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-2;
-}
-.gridRes {
-  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
-}
+  .contPading {
+    @apply p-4;
+  }
+  /* layout  */
+  .flexColCent {
+    @apply flex flex-col justify-center text-center items-center;
+  }
+  .flexRes {
+    @apply flex flex-col md:flex-row items-end md:items-center space-y-2 md:space-y-0 md:space-x-2;
+  }
+  .gridRes {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
 
-/* text  */
-.priceText {
-  @apply text-xl mb-2;
-}
-.vipPrice {
-  @apply text-green-700 font-bold;
-}
+  /* text  */
+  .priceText {
+    @apply text-xl mb-2 bg-amber-50 w-fit rounded-sm;
+  }
+  .vipPrice {
+    @apply text-green-700 font-bold;
+  }
 
-.errortext {
-  @apply text-red-500 mb-4 font-semibold;
-}
-.succestext {
-  @apply text-green-500 mb-4;
-}
-/* pages */
-/* Vs  */
-.vsth {
-  @apply p-4 border bg-blue-50 text-sm text-gray-700 font-semibold;
-}
+  .description {
+    @apply p-1.5 rounded-lg m-1.5;
+  }
 
-.vstd {
-  @apply p-4 border font-bold bg-amber-50 text-sm text-left;
-}
-.vstdI {
-  @apply p-4 border text-center;
-}
+  .errortext {
+    @apply text-red-500 mb-4 font-semibold;
+  }
+  .succestext {
+    @apply text-green-500 mb-4;
+  }
 
-/* Home */
-.viplogo {
-  @apply bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold;
-}
+  .categoryLink {
+    @apply text-blue-700 cursor-pointer hover:underline transition duration-200;
+  }
+  /* pages */
+  /* Vs  */
+  .vsth {
+    @apply p-4 border bg-blue-50 text-sm text-gray-700 font-semibold;
+  }
 
-/* Header  */
-.container {
-  @apply mx-auto px-4;
-}
-.hoverH {
-  @apply hover:text-blue-500;
-}
+  .vstd {
+    @apply p-4 border font-bold bg-amber-50 text-sm text-left;
+  }
+  .vstdI {
+    @apply p-4 border text-center;
+  }
 
-/* Profile */
-.avatarPrev {
-  @apply relative w-32 h-32 border-2 border-dashed rounded-full overflow-hidden flex items-center justify-center cursor-pointer hover:border-blue-500;
-}
+  /* Home */
+  .viplogo {
+    @apply bg-yellow-500 text-black px-2 py-1 rounded text-sm font-bold;
+  }
 
-.profileInput {
-  @apply w-full border rounded px-3 py-2 text-center focus:outline-none focus:ring focus:border-blue-300;
-}
-.profileLabel {
-  @apply block mb-2 px-1 font-medium;
-}
+  /* Header  */
+  .container {
+    @apply mx-auto px-4;
+  }
+  .hoverH {
+    @apply hover:text-blue-500;
+  }
 
-/* wish  */
+  /* Profile */
+  .avatarPrev {
+    @apply relative w-32 h-32 border-2 border-dashed rounded-full overflow-hidden flex items-center justify-center cursor-pointer hover:border-blue-500;
+  }
 
-.heart {
-  @apply h-6 w-6;
-}
+  .profileInput {
+    @apply w-full border rounded px-3 py-2 text-center focus:outline-none focus:ring focus:border-blue-300;
+  }
+  .profileLabel {
+    @apply block mb-2 px-1 font-medium;
+  }
 
-/* footer  */
-footer {
-  @apply w-full min-h-[42px] text-purple-500 py-2;
-}
+  /* wish  */
 
-/* Blur  */
-.backgBlur {
-  @apply bg-white/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
-}
-.backgBlur2 {
-  @apply bg-yellow-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
-}
-.backgBlur3 {
-  @apply bg-sky-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
-}
-.backgBlur4 {
-  @apply bg-sky-300/70 backdrop-blur-xs rounded-xs shadow-sm border border-white/20;
-}
-.backgBlur5 {
-  @apply bg-red-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+  .heart {
+    @apply h-6 w-6;
+  }
+
+  /* footer  */
+  footer {
+    @apply w-full min-h-[42px] text-purple-500 py-2;
+  }
+
+  @layer utilities {
+    .backgBlur {
+      @apply bg-white/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+    .backgBlur2 {
+      @apply bg-yellow-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+    .backgBlur3 {
+      @apply bg-sky-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+    .backgBlur4 {
+      @apply bg-sky-300/70 backdrop-blur-xs rounded-xs shadow-sm border border-white/20;
+    }
+    .backgBlur5 {
+      @apply bg-red-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+    }
+  }
 }

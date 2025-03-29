@@ -1,4 +1,6 @@
-const BASE_URL = 'https://backfulleact.onrender.com/api'
+import useStore from '../store/useStore'
+
+const BASE_URL = 'http://localhost:4001/api'
 
 export const API = async ({
   endpoint,
@@ -22,6 +24,13 @@ export const API = async ({
       body
     })
     const response = await res.json()
+
+    if (res.status === 401) {
+      useStore.getState().logout()
+      // Redirige al login pasando un parámetro para indicar que la sesión ha caducado.
+      window.location.href = '/login?sessionExpired=true'
+      return { error: { message: 'Sesión caducada. Vuelve a loguearte.' } }
+    }
 
     if (!res.ok) {
       return { error: response }
