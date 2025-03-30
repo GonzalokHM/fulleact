@@ -52,7 +52,7 @@ function SearchForm() {
           </svg>
         </button>
         {dropdownOpen && (
-          <div className='absolute left-0 mt-2 w-40 bg-white border rounded shadow-lg z-20'>
+          <div className='absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-20'>
             <button
               type='button'
               onClick={() => handleFilterSelect('name')}
