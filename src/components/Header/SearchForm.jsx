@@ -38,7 +38,7 @@ function SearchForm() {
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-5 w-5 text-sky-600'
+            className='filterIcon'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -56,14 +56,14 @@ function SearchForm() {
             <button
               type='button'
               onClick={() => handleFilterSelect('name')}
-              className='block w-full text-left px-4 py-2 hover:bg-gray-100'
+              className='filterSelect'
             >
               Nombre
             </button>
             <button
               type='button'
               onClick={() => handleFilterSelect('category')}
-              className='block w-full text-left px-4 py-2 hover:bg-gray-100'
+              className='filterSelect'
             >
               Categoría
             </button>

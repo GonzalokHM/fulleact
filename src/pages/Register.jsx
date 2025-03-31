@@ -84,7 +84,7 @@ function Register() {
       </form>
       <p className='mt-4 text-center backgBlur px-2'>
         ¿Ya tienes cuenta?{' '}
-        <Link to='/login' className='text-blue-500 '>
+        <Link to='/login' className='LoginRegisterLink '>
           Inicia Sesión
         </Link>
       </p>

@@ -38,7 +38,7 @@ function WishlistToggle({ productId, className = '' }) {
       {isInWishlist ? (
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='heart text-red-500'
+          className='heart'
           viewBox='0 0 20 20'
           fill='currentColor'
         >

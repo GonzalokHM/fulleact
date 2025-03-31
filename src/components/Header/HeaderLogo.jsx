@@ -9,7 +9,7 @@ function HeaderLogo() {
       onClick={() => navigate('/')}
       className='flex items-center cursor-pointer'
     >
-      <img src='/logo.webp' alt='Logo' className='w-10 h-10 mr-1' />
+      <img src='/logo.webp' alt='Logo' className='w-[40px] h-[40px] ' />
       <span className='font-bold hidden lg:inline'>Comprador</span>
     </div>
   )

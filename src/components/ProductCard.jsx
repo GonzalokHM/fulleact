@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { memo } from 'react'
 import BuyAndWishlist from './BuyAndWishlist'
 import CompareButton from './vs/CompareButton'
 
@@ -29,13 +28,15 @@ function ProductCard({
   return (
     <div className='flex flex-col justify-between backgBlur'>
       <CompareButton productId={product._id} />
-      <img
-        src={product.img}
-        alt={product.titulo}
-        width={400}
-        height={192}
-        className='w-full h-48 object-cover mb-4'
-      />
+      <Link to={`/product/${product._id}`}>
+        <img
+          src={product.img}
+          alt={product.titulo}
+          width={400}
+          height={192}
+          className='w-full h-48 object-cover mb-4'
+        />
+      </Link>
       <h3 className='line-clamp-3 backgBlur2 rounded-lg text-center'>
         {product.titulo}
       </h3>
@@ -53,4 +54,4 @@ function ProductCard({
   )
 }
 
-export default memo(ProductCard)
+export default ProductCard

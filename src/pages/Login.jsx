@@ -76,7 +76,7 @@ function Login() {
         </form>
         <p className='mt-4 text-center backgBlur p-2'>
           ¿No tienes cuenta?
-          <Link to='/register' className='text-blue-500'>
+          <Link to='/register' className='LoginRegisterLink'>
             Regístrate
           </Link>
         </p>
