@@ -6,17 +6,17 @@ import { lazy, Suspense } from 'react'
 import Loader from './components/Loader'
 import ProtectedRoute from './components/ProtectRoute'
 import VIPRoute from './components/VipRoure'
+import Login from './pages/Login'
+import NotFound from './pages/NotFound'
+import Register from './pages/Register'
+import Details from './pages/Details'
 
 const Vs = lazy(() => import('./pages/Vs'))
 const Wishlist = lazy(() => import('./pages/Wish'))
-const Details = lazy(() => import('./pages/Details'))
-const Login = () => import('./pages/Login')
-const Register = lazy(() => import('./pages/Register'))
 const SearchResults = lazy(() => import('./pages/SearchResult'))
 const GetVip = lazy(() => import('./pages/GetVip'))
 const Profile = lazy(() => import('./pages/Profile'))
 const VipSearch = lazy(() => import('./pages/VipSearch'))
-const NotFound = () => import('./pages/NotFound')
 
 function App() {
   const location = useLocation()
