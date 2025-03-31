@@ -10,13 +10,13 @@ import VIPRoute from './components/VipRoure'
 const Vs = lazy(() => import('./pages/Vs'))
 const Wishlist = lazy(() => import('./pages/Wish'))
 const Details = lazy(() => import('./pages/Details'))
-const Login = lazy(() => import('./pages/Login'))
+const Login = () => import('./pages/Login')
 const Register = lazy(() => import('./pages/Register'))
 const SearchResults = lazy(() => import('./pages/SearchResult'))
 const GetVip = lazy(() => import('./pages/GetVip'))
 const Profile = lazy(() => import('./pages/Profile'))
 const VipSearch = lazy(() => import('./pages/VipSearch'))
-const NotFound = lazy(() => import('./pages/NotFound'))
+const NotFound = () => import('./pages/NotFound')
 
 function App() {
   const location = useLocation()
