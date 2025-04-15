@@ -16,7 +16,7 @@ function Carousel({ title, products }) {
       aria-label={`Carrusel de productos: ${title}`}
     >
       {' '}
-      <h2 className='backgBlur2'>{title}</h2>{' '}
+      <h2>{title}</h2>{' '}
       <div className='relative'>
         {' '}
         <button

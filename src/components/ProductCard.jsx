@@ -26,7 +26,7 @@ function ProductCard({
     priceContent = <p className='priceText'>${product.precio}</p>
   }
   return (
-    <div className='flex flex-col justify-between backgBlur'>
+    <div className='flex flex-col justify-between'>
       <CompareButton productId={product._id} />
       <Link to={`/product/${product._id}`}>
         <img
@@ -37,9 +37,7 @@ function ProductCard({
           className='w-full h-48 object-cover mb-4'
         />
       </Link>
-      <h3 className='line-clamp-3 backgBlur2 rounded-lg text-center'>
-        {product.titulo}
-      </h3>
+      <h3 className='line-clamp-3 rounded-lg text-center'>{product.titulo}</h3>
       {priceContent}
       <div className='flex justify-between'>
         <BuyAndWishlist

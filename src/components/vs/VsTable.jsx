@@ -4,7 +4,7 @@ function ComparisonTable({ products, removeComparison }) {
       <table className='min-w-full border-collapse'>
         <thead>
           <tr>
-            <th className='backgBlur'>🛑</th>
+            <th>🛑</th>
             {products.map((product) => (
               <th key={product._id} className='vsth backgBlur3'>
                 <div className='flexColCent '>
@@ -65,9 +65,9 @@ function ComparisonTable({ products, removeComparison }) {
             {products.map((product) => (
               <td
                 key={product._id}
-                className=' border text-sm text-gray-800 leading-snug'
+                className='text-sm text-gray-800 leading-snug'
               >
-                <div className='max-h-40 overflow-y-auto whitespace-pre-line p-0.5 bg-amber-50'>
+                <div className='max-h-40 overflow-y-auto whitespace-pre-line p-0.5 backgBlur6'>
                   {product.descripcion}
                 </div>
               </td>

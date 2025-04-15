@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className='backgBlur4'>
+    <footer>
       <div className='container text-center font-bold'>
         <small>
           &copy; {new Date().getFullYear()} Comparador de Productos. Todos los

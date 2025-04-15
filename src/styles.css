@@ -2,24 +2,41 @@
 
 @layer theme {
   :root {
+    /* paleta */
+    --rose: #f72585ff;
+    --fandango: #b5179eff;
+    --grape: #7209b7ff;
+    --chrysler-blue: #560badff;
+    --zaffre: #3a0ca3ff;
+    --palatinate-blue: #3f37c9ff;
+    --neon-blue: #4361eeff;
+    --chefchaouen-blue: #4895efff;
+    --vivid-sky-blue: #4cc9f0ff;
+
+    --malachite: #39d05cff;
+    --malachite-2: #35e95fff;
+    --emerald: #35d475ff;
+    --mint: #35ac7aff;
+    --teal: #347f83ff;
+
     /* Colores */
-    --color-primary: var(--color-blue-500);
-    --color-primary-sky: var(--color-sky-600);
-    --color-primary-hover: var(--color-blue-600);
-    --color-primary-bold: var(--color-blue-700);
-    --color-primary-light: var(--color-blue-300);
-    --color-primary-smooth: var(--color-blue-50);
-    --color-secondary: var(--color-green-500);
-    --color-secondary-hover: var(--color-green-600);
-    --color-secondary-bold: var(--color-green-700);
+    --color-primary: var(--neon-blue);
+    --color-primary-light: var(--chefchaouen-blue);
+    --color-primary-hover: var(--chrysler-blue);
+    --color-primary-bold: var(--zaffre);
+    --color-primary-smooth: var(--palatinate-blue);
+    --color-primary-sky: var(--vivid-sky-blue);
+    --color-secondary: var(--malachite-2);
+    --color-secondary-hover: var(--emerald);
+    --color-secondary-bold: var(--teal);
     --color-danger: var(--color-red-500);
     --color-danger-hover: var(--color-red-600);
     --color-danger-hover-text: var(--color-red-700);
     --color-acent: var(--color-yellow-500);
     --color-smooth-acent: var(--color-amber-50);
-    --color-purple: var(--color-purple-500);
-    --color-purple-hover: var(--color-purple-600);
-    --color-purple-light: var(--color-purple-200);
+    --color-purple: var(--fandango);
+    --color-purple-hover: var(--grape);
+    --color-purple-light: var(--rose);
     --color-primary-text: var(--color-white);
   }
 }
@@ -135,6 +152,7 @@
   }
   .btnArrowCarrousel:hover {
     background-color: var(--color-purple-light);
+    color: var(--color-purple-hover);
   }
 
   /* borders  */
@@ -166,7 +184,6 @@
   /* text  */
   .priceText {
     @apply text-xl mb-2 w-fit rounded-sm;
-    background-color: var(--color-smooth-acent);
   }
   .vipPrice {
     @apply font-bold;
@@ -217,7 +234,8 @@
   /* footer  */
   footer {
     @apply w-full min-h-[42px] py-2;
-    color: var(--color-purple);
+    color: var(--color-smooth-acent);
+    background-color: var(--color-secondary-bold);
   }
 
   /* pages */
@@ -230,11 +248,9 @@
   /* tavle */
   .vsth {
     @apply p-4 border text-sm text-gray-700 font-semibold;
-    background-color: var (--color-primary-smooth);
   }
   .vstd {
     @apply p-4 border font-bold text-sm text-left;
-    background-color: var(--color-smooth-acent);
   }
   .vstdI {
     @apply p-4 border text-center;
@@ -288,6 +304,9 @@
   }
   .backgBlur5 {
     @apply bg-red-300/30 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
+  }
+  .backgBlur6 {
+    @apply bg-amber-50/70 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;
   }
   .backgBlurDimisplus {
     @apply bg-green-500/70 backdrop-blur-xs rounded-xl shadow-sm border border-white/20;

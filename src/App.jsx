@@ -22,7 +22,7 @@ function App() {
   const location = useLocation()
   const showSearchInput = location.pathname !== '/vipSearch'
   return (
-    <div className="flex flex-col min-h-screen bg-[url('/background.svg')] bg-repeat bg-center bg-gray-50">
+    <div className='flex flex-col min-h-screen'>
       <Header showSearchInput={showSearchInput} />
       <main className='flex-grow '>
         <Suspense fallback={<Loader label='Cargando página...' />}>

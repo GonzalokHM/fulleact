@@ -74,7 +74,7 @@ function Profile() {
   return (
     <div className='container contPading flexColCent max-w-md'>
       <header className='flex items-center mb-6'>
-        <h1 className='backgBlur'>Mi Perfil</h1>
+        <h1>Mi Perfil</h1>
         {user?.avatar && (
           <img
             src={user.avatar}
@@ -99,7 +99,7 @@ function Profile() {
       >
         <fieldset className='space-y-4' disabled={pending}>
           <div className='flexColCent'>
-            <label htmlFor='username' className='profileLabel backgBlur'>
+            <label htmlFor='username' className='profileLabel'>
               Nombre de usuario
             </label>
             <input
@@ -113,7 +113,7 @@ function Profile() {
             />
           </div>
           <div className='flexColCent'>
-            <label htmlFor='email' className='profileLabel backgBlur'>
+            <label htmlFor='email' className='profileLabel'>
               Correo electrónico
             </label>
             <input
@@ -127,8 +127,8 @@ function Profile() {
             />
           </div>
           <div className='justify-items-center'>
-            <label htmlFor='avatar' className='profileLabel backgBlur'>
-              Avatar (imagen)
+            <label htmlFor='avatar' className='profileLabel'>
+              Avatar
             </label>
             <div className='avatarPrev'>
               {avatarPreview ? (
@@ -151,8 +151,8 @@ function Profile() {
                 onChange={handleAvatarChange}
               />
             </div>
-            <p className='text-sm text-gray-600 mt-2 backgBlur2'>
-              Haz clic en el área para seleccionar tu avatar.
+            <p className='text-sm text-gray-500 mt-2'>
+              Haz clic en el área para subir tu avatar.
             </p>
           </div>
         </fieldset>

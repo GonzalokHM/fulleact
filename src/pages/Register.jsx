@@ -34,12 +34,10 @@ function Register() {
 
   return (
     <section className='container flexColCent'>
-      <h1 className='text-3xl font-bold mb-4 backgBlur3 mt-3 px-2'>
-        Regístrate
-      </h1>
+      <h1 className='text-3xl font-bold mb-4 mt-3 px-2'>Regístrate</h1>
       {error && <p className='errortext'>{error}</p>}
       <form action={submitAction} className='max-w-sm mx-auto'>
-        <div className='mb-4 backgBlur'>
+        <div className='mb-4'>
           <label htmlFor='username' className='block mb-1'>
             Nombre de usuario
           </label>
@@ -52,7 +50,7 @@ function Register() {
             required
           />
         </div>
-        <div className='mb-4 backgBlur'>
+        <div className='mb-4'>
           <label htmlFor='email' className='block mb-1'>
             Correo electrónico
           </label>
@@ -65,7 +63,7 @@ function Register() {
             required
           />
         </div>
-        <div className='mb-4 backgBlur'>
+        <div className='mb-4'>
           <label htmlFor='password' className='block mb-1'>
             Contraseña
           </label>

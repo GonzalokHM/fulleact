@@ -35,9 +35,9 @@ function Vs() {
 
   return (
     <div className='contPading'>
-      <h2 className='backgBlur4 w-xs rounded-md'>Comparar Productos</h2>
+      <h2 className='w-xs rounded-md'>Comparar Productos</h2>
       {comparison.length === 0 && (
-        <p className='backgBlur5 text-center'>
+        <p className='text-center'>
           No has seleccionado productos para comparar.
         </p>
       )}

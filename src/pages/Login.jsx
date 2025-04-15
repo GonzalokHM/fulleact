@@ -41,10 +41,10 @@ function Login() {
         </div>
       )}
       <section className='container flexColCent'>
-        <h1 className='backgBlur2 mt-3 mb-3'>Iniciar Sesión</h1>
+        <h1 className=' mt-3 mb-3'>Iniciar Sesión</h1>
         {error && <p className='errortext'>{error}</p>}
         <form action={submitAction} className='max-w-sm mx-auto'>
-          <div className='mb-4 backgBlur'>
+          <div className='mb-4'>
             <label className='block mb-1' htmlFor='email'>
               Correo electrónico
             </label>
@@ -57,7 +57,7 @@ function Login() {
               required
             />
           </div>
-          <div className='mb-4 backgBlur'>
+          <div className='mb-4'>
             <label className='block mb-1' htmlFor='password'>
               Contraseña
             </label>

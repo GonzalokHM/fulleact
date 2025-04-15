@@ -46,7 +46,7 @@ function VipSearch() {
 
   return (
     <div className='contPading flexColCent'>
-      <h2 className='backgBlur2 px-2'>Búsqueda VIP de Productos</h2>
+      <h2 className='px-2'>Búsqueda VIP de Productos</h2>
       <form action={searchAction} className='mb-4'>
         <input
           name='search'

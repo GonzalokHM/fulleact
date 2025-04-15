@@ -38,12 +38,12 @@ function Details() {
 
   return (
     <div className='contPading'>
-      <h1 className='mb-4 backgBlur2 text-center'>{product.titulo}</h1>
-      <article className='flex flex-col md:flex-row backgBlur'>
+      <h1 className='mb-4 text-center'>{product.titulo}</h1>
+      <article className='flex flex-col md:flex-row'>
         <img
           src={product.img}
           alt={product.titulo}
-          className='w-full md:w-1/2 object-cover mb-4 md:mb-0 md:mr-4 backgBlur'
+          className='w-full md:w-1/2 object-cover mb-4 md:mb-0 md:mr-4'
         />
         <section className='flex flex-col justify-between'>
           <section>

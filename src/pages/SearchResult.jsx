@@ -50,16 +50,16 @@ function SearchResults() {
 
   return (
     <div className='contPading'>
-      <h2 className='backgBlur2 w-fit px-1'>Resultados de búsqueda</h2>
+      <h2 className='w-fit px-1'>Resultados de búsqueda</h2>
       {pending && (
         <Loader size='w-12 h-12' label={`Buscando ${name || 'producto'}...`} />
       )}
       {error && <p className='errortext'>{error}</p>}
       {!pending && products.length === 0 && (
         <section className='flexColCent contPading' aria-live='polite'>
-          <h3 className='mb-2 backgBlur5'>No se encontraron productos.</h3>
-          <p className='mb-3 backgBlur'>Intenta con otro término.</p>
-          <p className='mb-4 backgBlur'>
+          <h3 className='mb-2 text-red-400'>No se encontraron productos.</h3>
+          <p className='mb-3'>Intenta con otro término.</p>
+          <p className='mb-4'>
             O prueba la búsqueda VIP para obtener resultados adicionales.
           </p>
           <button
