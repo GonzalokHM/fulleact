@@ -34,7 +34,7 @@ function ProductCard({
           alt={product.titulo}
           width={400}
           height={192}
-          className='w-full h-48 object-cover mb-4'
+          className='mb-4'
         />
       </Link>
       <h3 className='line-clamp-3 rounded-lg text-center'>{product.titulo}</h3>
