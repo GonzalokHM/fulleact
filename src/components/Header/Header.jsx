@@ -3,7 +3,7 @@ import SearchForm from './SearchForm'
 import HeaderLogo from './HeaderLogo'
 import useStore from '../../store/useStore'
 import HeaderNavMobil from './HeaderNavMobil'
-import CategoriesBar from './CategoriesBar'
+import CategoriesBar from './CategoryBar'
 import { memo } from 'react'
 
 function Header({ showSearchInput }) {
