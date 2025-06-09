@@ -1,6 +1,6 @@
-import EmptyStar from './EmpyStart'
+import EmptyStar from './EmpyStar'
 import FullStar from './FullStar'
-import HalfStar from './HalfStart'
+import HalfStar from './HalfStar'
 
 const Stars = ({ rating }) => {
   const starRating = rating / 2

@@ -35,7 +35,6 @@ const useStore = create(
         set((state) => {
           if (state.comparison.includes(productId)) return state
           if (state.comparison.length >= 4) {
-            alert('Solo puedes comparar hasta 4 productos.')
             return state
           }
           return { comparison: [...state.comparison, productId] }

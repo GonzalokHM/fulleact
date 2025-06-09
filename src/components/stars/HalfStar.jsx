@@ -1,4 +1,4 @@
-import EmptyStar from './EmpyStart'
+import EmptyStar from './EmpyStar'
 import FullStar from './FullStar'
 
 const HalfStar = () => (

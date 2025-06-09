@@ -1,38 +1,71 @@
 // src/components/HeaderNav.jsx
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function HeaderNav({ isMobile = false, onLinkClick, id }) {
   if (isMobile) {
     return (
       <nav id={id} className='bg-white shadow'>
         <div className='container py-2 flex items-center flex-col space-y-2'>
-          <Link to='/' className='hoverH' onClick={onLinkClick}>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              isActive ? 'hoverH activeNav' : 'hoverH'
+            }
+            onClick={onLinkClick}
+          >
             Home
-          </Link>
-          <Link to='/wishlist' className='hoverH' onClick={onLinkClick}>
+          </NavLink>
+          <NavLink
+            to='/wishlist'
+            className={({ isActive }) =>
+              isActive ? 'hoverH activeNav' : 'hoverH'
+            }
+            onClick={onLinkClick}
+          >
             Wishlist
-          </Link>
-          <Link to='/profile' className='hoverH' onClick={onLinkClick}>
+          </NavLink>
+          <NavLink
+            to='/profile'
+            className={({ isActive }) =>
+              isActive ? 'hoverH activeNav' : 'hoverH'
+            }
+            onClick={onLinkClick}
+          >
             Profile
-          </Link>
-          <Link to='/compare' className='hoverH' onClick={onLinkClick}>
+          </NavLink>
+          <NavLink
+            to='/compare'
+            className={({ isActive }) =>
+              isActive ? 'hoverH activeNav' : 'hoverH'
+            }
+            onClick={onLinkClick}
+          >
             Compare
-          </Link>
+          </NavLink>
         </div>
       </nav>
     )
   }
   return (
     <nav className='hidden md:flex items-center space-x-4'>
-      <Link to='/wishlist' className='hoverH'>
+      <NavLink
+        to='/wishlist'
+        className={({ isActive }) => (isActive ? 'hoverH activeNav' : 'hoverH')}
+      >
         Wishlist
-      </Link>
-      <Link to='/profile' className='hoverH'>
+      </NavLink>
+      <NavLink
+        to='/profile'
+        className={({ isActive }) => (isActive ? 'hoverH activeNav' : 'hoverH')}
+      >
         Profile
-      </Link>
-      <Link to='/compare' className='hoverH'>
+      </NavLink>
+      <NavLink
+        to='/compare'
+        className={({ isActive }) => (isActive ? 'hoverH activeNav' : 'hoverH')}
+      >
         Compare
-      </Link>
+      </NavLink>
     </nav>
   )
 }

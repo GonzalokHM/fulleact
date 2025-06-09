@@ -221,6 +221,10 @@
   .hoverH:hover {
     color: var(--color-primary);
   }
+  .activeNav {
+    @apply font-semibold;
+    color: var(--color-primary-bold);
+  }
   .filterIcon {
     @apply h-5 w-5;
     color: var(--color-primary-sky);

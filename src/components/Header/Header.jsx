@@ -3,11 +3,13 @@ import SearchForm from './SearchForm'
 import HeaderLogo from './HeaderLogo'
 import useStore from '../../store/useStore'
 import HeaderNavMobil from './HeaderNavMobil'
+import CategoriesBar from './CategoriesBar'
 import { memo } from 'react'
 
 function Header({ showSearchInput }) {
   const menuOpen = useStore((state) => state.menuOpen)
   const toggleMenu = useStore((state) => state.toggleMenu)
+  const setMenuOpen = useStore((state) => state.setMenuOpen)
   const menuId = 'mobile-menu'
 
   return (
@@ -52,10 +54,11 @@ function Header({ showSearchInput }) {
         </div>
         {showSearchInput && <SearchForm />}
       </div>
+      <CategoriesBar />
       <HeaderNavMobil
         id={menuId}
         open={menuOpen}
-        onClose={() => useStore.getState().setMenuOpen(false)}
+        onClose={() => setMenuOpen(false)}
       />
     </header>
   )

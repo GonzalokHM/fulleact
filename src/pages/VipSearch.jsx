@@ -22,7 +22,7 @@ function VipSearch() {
 
   const inputRef = useRef()
   const [products, setProducts] = useState([])
-  const [error, searchAction] = useActionState(async (_, formData) => {
+  const [error, searchAction, pending] = useActionState(async (_, formData) => {
     const term = formData.get('search')?.trim()
     if (!term) return 'Introduce un término de búsqueda'
 
@@ -57,10 +57,12 @@ function VipSearch() {
         />
         <SearchButton />
       </form>
+      {pending && <Loader size='w-12 h-12' label='Buscando resultados...' />}
       {error && <p className='errortext'>{error}</p>}
-      {products.length === 0 && !error ? (
-        <Loader size='w-12 h-12' label='Buscando resultados...' />
-      ) : (
+      {!pending && products.length === 0 && !error && (
+        <p className='font-bold'>No se encontraron productos.</p>
+      )}
+      {!pending && products.length > 0 && (
         <div className='gridRes'>
           {products.map((product) => (
             <ProductCard
