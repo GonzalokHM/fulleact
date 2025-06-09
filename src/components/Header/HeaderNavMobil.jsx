@@ -1,9 +1,9 @@
 import HeaderNav from './HeaderNav'
 
-function HeaderNavMobil({ open, onClose }) {
+function HeaderNavMobil({ open, onClose, id }) {
   if (!open) return null
 
-  return <HeaderNav isMobile={true} onLinkClick={onClose} />
+  return <HeaderNav id={id} isMobile={true} onLinkClick={onClose} />
 }
 
 export default HeaderNavMobil

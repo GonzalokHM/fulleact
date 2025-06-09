@@ -35,6 +35,8 @@ function SearchForm() {
           onClick={() => setDropdownOpen(!dropdownOpen)}
           className='border1 mr-2 focus:outline-none flex items-center justify-center p-2'
           aria-label='Seleccionar filtro'
+          aria-expanded={dropdownOpen}
+          aria-controls='filter-menu'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -52,9 +54,14 @@ function SearchForm() {
           </svg>
         </button>
         {dropdownOpen && (
-          <div className='absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-20'>
+          <div
+            id='filter-menu'
+            role='menu'
+            className='absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-20'
+          >
             <button
               type='button'
+              role='menuitem'
               onClick={() => handleFilterSelect('name')}
               className='filterSelect'
             >
@@ -70,6 +77,7 @@ function SearchForm() {
           </div>
         )}
       </div>
+      <label htmlFor='search'>Buscar</label>
       <input
         type='text'
         id='search'

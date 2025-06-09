@@ -8,6 +8,7 @@ import { memo } from 'react'
 function Header({ showSearchInput }) {
   const menuOpen = useStore((state) => state.menuOpen)
   const toggleMenu = useStore((state) => state.toggleMenu)
+  const menuId = 'mobile-menu'
 
   return (
     <header className='bg-white shadow mb-4'>
@@ -21,6 +22,8 @@ function Header({ showSearchInput }) {
             onClick={toggleMenu}
             className='md:hidden focus:outline-none '
             aria-label='Toggle menu'
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
           >
             <svg
               className='w-6 h-6'
@@ -50,6 +53,7 @@ function Header({ showSearchInput }) {
         {showSearchInput && <SearchForm />}
       </div>
       <HeaderNavMobil
+        id={menuId}
         open={menuOpen}
         onClose={() => useStore.getState().setMenuOpen(false)}
       />

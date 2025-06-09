@@ -32,6 +32,7 @@ function ProductCard({
         <img
           src={product.img}
           alt={product.titulo}
+          loading='lazy'
           width={400}
           height={192}
           className='mb-4'

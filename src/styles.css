@@ -245,7 +245,7 @@
     @apply absolute top-full left-0 mt-1 text-xs p-1 rounded shadow;
     color: var(--color-primary-text);
   }
-  /* tavle */
+  /* table */
   .vsth {
     @apply p-4 border text-sm text-gray-700 font-semibold;
   }

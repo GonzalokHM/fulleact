@@ -1,4 +1,3 @@
-// src/components/VIPRoute.jsx
 import { Navigate, useLocation } from 'react-router-dom'
 import useStore from '../store/useStore'
 
@@ -12,7 +11,7 @@ function VIPRoute({ children }) {
   if (!user.vip) {
     return (
       <Navigate
-        to='/getVip'
+        to='/getvip'
         replace
         state={{ from: location.pathname, ...location.state }}
       />

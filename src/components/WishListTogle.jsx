@@ -34,6 +34,7 @@ function WishlistToggle({ productId, className = '' }) {
       onClick={handleClick}
       className={`focus:outline-none ${className}`}
       aria-label='Toggle Wishlist'
+      aria-pressed={isInWishlist}
     >
       {isInWishlist ? (
         <svg

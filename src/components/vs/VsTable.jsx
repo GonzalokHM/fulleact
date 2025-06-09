@@ -6,7 +6,7 @@ function ComparisonTable({ products, removeComparison }) {
           <tr>
             <th>🛑</th>
             {products.map((product) => (
-              <th key={product._id} className='vsth backgBlur3'>
+              <th scope='col' key={product._id} className='vsth backgBlur3'>
                 <div className='flexColCent '>
                   <img
                     src={product.img}
@@ -29,7 +29,9 @@ function ComparisonTable({ products, removeComparison }) {
         </thead>
         <tbody>
           <tr>
-            <td className='vstd backgBlur2'>Precio</td>
+            <th scope='row' className='vstd backgBlur2'>
+              Precio
+            </th>
             {products.map((product) => (
               <td key={product._id} className='vstdI backgBlur1'>
                 ${product.precio}
@@ -37,7 +39,9 @@ function ComparisonTable({ products, removeComparison }) {
             ))}
           </tr>
           <tr>
-            <td className='vstd backgBlur2'>Marca</td>
+            <th scope='row' className='vstd backgBlur2'>
+              Marca
+            </th>
             {products.map((product) => (
               <td key={product._id} className='vstdI backgBlur1'>
                 {product.marca}
@@ -45,7 +49,9 @@ function ComparisonTable({ products, removeComparison }) {
             ))}
           </tr>
           <tr>
-            <td className='vstd backgBlur2'>Puntuación</td>
+            <th scope='row' className='vstd backgBlur2'>
+              Puntuación
+            </th>
             {products.map((product) => (
               <td key={product._id} className='vstdI backgBlur1'>
                 {product.puntuacion}⭐
@@ -53,7 +59,9 @@ function ComparisonTable({ products, removeComparison }) {
             ))}
           </tr>
           <tr>
-            <td className='vstd backgBlur2'>Categoría</td>
+            <th scope='row' className='vstd backgBlur2'>
+              Categoría
+            </th>
             {products.map((product) => (
               <td key={product._id} className='vstdI backgBlur1'>
                 {product.categoria ? product.categoria.nombre : 'N/A'}
@@ -61,7 +69,9 @@ function ComparisonTable({ products, removeComparison }) {
             ))}
           </tr>
           <tr>
-            <td className='vstd backgBlur'>Descripción</td>
+            <th scope='row' className='vstd backgBlur'>
+              Descripción
+            </th>
             {products.map((product) => (
               <td
                 key={product._id}

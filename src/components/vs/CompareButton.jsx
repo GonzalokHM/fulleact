@@ -24,11 +24,17 @@ function CompareButton({ productId }) {
 
   return (
     <div className='relative'>
-      <button onClick={handleClick} className='btnCompare'>
+      <button
+        onClick={handleClick}
+        className='btnCompare'
+        aria-pressed={isInComparison}
+      >
         {isInComparison ? '-' : '+'}
       </button>
       {showMessage && (
-        <div className={`compareDimis ${bgClass}`}>{actionMessage}</div>
+        <div className={`compareDimis ${bgClass}`} role='status'>
+          {actionMessage}
+        </div>
       )}
     </div>
   )

@@ -1,10 +1,10 @@
 // src/components/HeaderNav.jsx
 import { Link } from 'react-router-dom'
 
-function HeaderNav({ isMobile = false, onLinkClick }) {
+function HeaderNav({ isMobile = false, onLinkClick, id }) {
   if (isMobile) {
     return (
-      <nav className='bg-white shadow'>
+      <nav id={id} className='bg-white shadow'>
         <div className='container py-2 flex items-center flex-col space-y-2'>
           <Link to='/' className='hoverH' onClick={onLinkClick}>
             Home
