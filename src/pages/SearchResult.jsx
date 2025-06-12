@@ -76,6 +76,13 @@ function SearchResults() {
           <ProductCard key={product._id} product={product} />
         ))}
       </section>
+      {type === 'category' && products.length > 0 && (
+        <div className='flex justify-center mt-4'>
+          <button type='button' onClick={handleVipSearch} className='btnVip'>
+            Cargar más productos
+          </button>
+        </div>
+      )}
     </div>
   )
 }
