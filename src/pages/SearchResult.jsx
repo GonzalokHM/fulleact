@@ -2,6 +2,7 @@ import { startTransition, useActionState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { filterProducts } from '../api/products'
 import ProductCard from '../components/ProductCard'
+import { vipSearchMoreByCategory } from '../api/category'
 
 function SearchResults() {
   const { search } = useLocation()
@@ -37,15 +38,20 @@ function SearchResults() {
   }, [name, type, fetchResults])
 
   const handleVipSearch = () => {
-    navigate(
-      `/vipSearch?name=${encodeURIComponent(name)}&type=${encodeURIComponent(
-        type
-      )}`,
-      {
-        state: { from: '/search-results', searchTerm: name, searchType: type }
-      }
-    )
+    navigate(`/vipSearch?name=${encodeURIComponent(name)}`)
   }
+
+  const handleLoadMore = async () => {
+    const { error: loadError } = await vipSearchMoreByCategory(name)
+    if (loadError) {
+      console.error('Error cargando más:', loadError)
+      return
+    }
+    startTransition(() => {
+      fetchResults()
+    })
+  }
+
   const { products, error } = state
 
   return (
@@ -78,8 +84,8 @@ function SearchResults() {
       </section>
       {type === 'category' && products.length > 0 && (
         <div className='flex justify-center mt-4'>
-          <button type='button' onClick={handleVipSearch} className='btnVip'>
-            Cargar más productos
+          <button type='button' onClick={handleLoadMore} className='btnVip'>
+            {pending ? 'Cargando…' : 'Cargar más productos'}
           </button>
         </div>
       )}

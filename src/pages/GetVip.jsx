@@ -11,7 +11,6 @@ function GetVip() {
   const location = useLocation()
   const from = location.state?.from
   const searchTerm = location.state?.searchTerm
-  const searchType = location.state?.searchType
 
   const handleActivateVip = async () => {
     setLoading(true)
@@ -26,11 +25,7 @@ function GetVip() {
       } else {
         setUser(response)
         if (from === '/search-results' && searchTerm) {
-          navigate(
-            `/vipSearch?name=${encodeURIComponent(
-              searchTerm
-            )}&type=${encodeURIComponent(searchType)}`
-          )
+          navigate(`/vipSearch?name=${encodeURIComponent(searchTerm)}`)
         } else {
           setUser(response)
           navigate('/profile')
